@@ -1,0 +1,29 @@
+.gridWrapper {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    background-color: rgb(198, 195, 195);
+    grid-gap: 1px;
+}
+
+.cellWrapper {
+    min-width: 140px;
+    min-height: 100px;
+    background-color: #fff;
+}
+
+.cellWrapper_weekend {
+    background-color: #eaeaea;
+}
+
+.rowInCell {
+    display: flex;
+}
+
+.dayWrapper {
+    display: flex;
+    height: 33px;
+    width: 33px;
+    align-items: center;
+    justify-content: center;
+}
