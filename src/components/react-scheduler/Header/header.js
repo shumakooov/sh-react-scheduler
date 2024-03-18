@@ -1,10 +1,23 @@
 import React from "react";
+import styles from "./header.module.css"
 
-const Header = () => {
+const Header = ({ startingPointTime, prevHandler, todayHandler, nextHandler }) => {
 
     return (
-        <div>Header</div>
+        <div className={styles.wrapper}>
+            <div className={styles.currentDate}>
+                <div className={styles.currentDateText}>{startingPointTime.format('MMMM YYYY')}</div>
+            </div>
+            <div>
+                <button className={styles.btnChangeDay} onClick={() => prevHandler()}> &lt; </button>
+                <button className={`${styles.btnChangeDay} ${styles.btnChangeDayToday}`} onClick={() => todayHandler()}>Today</button>
+                <button className={styles.btnChangeDay} onClick={() => nextHandler()}> &gt; </button>
+            </div>
+            <div>
+                Месяц
+            </div>
+        </div>
     )
 }
 
-export {Header}
+export { Header }

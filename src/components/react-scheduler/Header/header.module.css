@@ -1,0 +1,38 @@
+.wrapper {
+    border-bottom: 1px solid rgb(198, 195, 195);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 45px;
+}
+
+.btnChangeDay {
+    border: none;
+    background-color: #fff;
+    color: rgb(0, 145, 255);
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.btnChangeDay:hover {
+    background-color: rgb(227, 224, 224);
+    border-radius: 3px;
+}
+
+.btnChangeDay:active {
+    background-color: rgb(214, 214, 214);;
+}
+
+.btnChangeDayToday {
+    width: 80px;
+}
+
+.currentDate {
+    width: 120px;
+}
+
+.currentDateText {
+    font-size: 18px;
+}
