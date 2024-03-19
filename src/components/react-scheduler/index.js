@@ -4,7 +4,7 @@ import { CalendarGrid } from "./CalendarGrid/calendar-grid";
 import moment from "moment";
 import styles from './index.module.css'
 
-function Scheduler() {
+function Scheduler({ events }) {
   const [startingPointTime, setStartingPointTime] = useState(moment())
   const startDay = startingPointTime.clone().startOf('month').startOf('week');
 
@@ -31,6 +31,7 @@ function Scheduler() {
       <CalendarGrid
         startDay={startDay}
         startingPointTime={startingPointTime}
+        events={events}
       />
     </div>
   );
