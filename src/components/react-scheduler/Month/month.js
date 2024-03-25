@@ -2,7 +2,7 @@ import React from "react";
 import { MonthCell } from "../MonthCell/month-cell";
 import { isDayContainEvent } from "../../../utils/helpers";
 
-export const Month = ({ startDay, events, startingPointTime }) => {
+export const Month = ({ startDay, events, startingPointTime, setView }) => {
     const day = startDay.clone();
 
     const totalDays = 42;
@@ -10,7 +10,7 @@ export const Month = ({ startDay, events, startingPointTime }) => {
 
     return (
         daysArray.map((dayItem) => (
-            <MonthCell dayItem={dayItem} events={events.filter(event => isDayContainEvent(event, dayItem))} startingPointTime={startingPointTime} />
+            <MonthCell setView={setView} dayItem={dayItem} events={events.filter(event => isDayContainEvent(event, dayItem))} startingPointTime={startingPointTime} key={dayItem.unix()} />
         ))
     )
 }

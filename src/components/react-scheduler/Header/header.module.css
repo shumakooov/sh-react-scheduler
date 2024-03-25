@@ -1,9 +1,16 @@
 .wrapper {
     border-bottom: 1px solid rgb(198, 195, 195);
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 45px;
+    padding: 0 10px;
 }
 
 .btnChangeDay {
@@ -29,8 +36,33 @@
     width: 80px;
 }
 
+.btnSwitchMode {
+    border: none;
+    background-color: #fff;
+    color: rgb(0, 145, 255);
+    font-size: 18px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.btnSwitchMode:hover {
+    background-color: rgb(227, 224, 224);
+    border-radius: 3px;
+}
+
+.btnSwitchMode:active {
+    background-color: rgb(214, 214, 214);
+}
+
+.btnSwitchMode_unpressed {
+    background-color: rgb(214, 214, 214);
+    border-radius: 3px;
+}
+
 .currentDate {
     width: 120px;
+    display: flex;
+    flex-direction: row;
 }
 
 .currentDateText {

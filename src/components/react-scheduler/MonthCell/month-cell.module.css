@@ -58,6 +58,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    cursor: pointer;
 }
 
 .showMoreTitle {
@@ -70,4 +71,5 @@
     margin: 0 2px 0 auto;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }

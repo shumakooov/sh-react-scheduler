@@ -31,9 +31,21 @@ const myEvents = [
     end: new Date("2024-03-21T22:30"),
   },
   {
-    title: "Пить много воды",
+    title: "Пить много воды (целый день)",
     start: new Date("2024-03-22"),
     end: new Date("2024-03-22T21:00"),
+    allDay: true,
+  },
+  {
+    title: "Убраться в комнате",
+    start: new Date("2024-03-25T17:00"),
+    end: new Date("2024-03-25T18:00"),
+    allDay: true,
+  },
+  {
+    title: "Приготовить ужин",
+    start: new Date("2024-03-25T18:00"),
+    end: new Date("2024-03-25T19:00"),
     allDay: true,
   },
 ]

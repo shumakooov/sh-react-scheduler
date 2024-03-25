@@ -1,8 +1,9 @@
 import React from "react";
 import styles from './month-cell.module.css';
 import { isCurrentDay, isDayContainEvent, isSelectedMonth } from "../../../utils/helpers";
+import { views } from "../../../utils/constants";
 
-export const MonthCell = ({ dayItem, events, startingPointTime }) => {
+export const MonthCell = ({ dayItem, events, startingPointTime, setView }) => {
     return (
         <div className={dayItem.day() === 6 || dayItem.day() === 0 ? `${styles.cellWrapper} ${styles.cellWrapper_weekend}` : styles.cellWrapper}
             key={dayItem.unix()}
@@ -13,7 +14,7 @@ export const MonthCell = ({ dayItem, events, startingPointTime }) => {
                 </div>
                 {
                     events.length > 2 ? (
-                        <div className={styles.showMoreTitle} >
+                        <div className={styles.showMoreTitle} onClick={() => setView(views.DAY)}>
                             + {events.length - 2} more
                         </div>
                     ) : null
