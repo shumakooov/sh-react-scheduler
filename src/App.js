@@ -32,21 +32,19 @@ const myEvents = [
   },
   {
     title: "Пить много воды (целый день)",
-    start: new Date("2024-03-22"),
-    end: new Date("2024-03-22T21:00"),
+    start: new Date("2024-03-26"),
+    end: new Date("2024-03-26T21:00"),
     allDay: true,
   },
   {
     title: "Убраться в комнате",
-    start: new Date("2024-03-25T17:00"),
-    end: new Date("2024-03-25T18:00"),
-    allDay: true,
+    start: new Date("2024-03-26T17:00"),
+    end: new Date("2024-03-26T18:00"),
   },
   {
     title: "Приготовить ужин",
-    start: new Date("2024-03-25T18:00"),
-    end: new Date("2024-03-25T19:00"),
-    allDay: true,
+    start: new Date("2024-03-26T18:00"),
+    end: new Date("2024-03-26T19:00"),
   },
 ]
 

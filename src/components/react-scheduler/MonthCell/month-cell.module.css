@@ -25,6 +25,7 @@
     justify-content: center;
     margin: 4px;
     color: #acacac;
+    cursor: pointer;
 }
 
 .selectedMonthColor {

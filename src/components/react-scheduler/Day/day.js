@@ -4,13 +4,14 @@ import { isDayContainEvent } from "../../../utils/helpers";
 import moment from "moment";
 
 export const Day = ({ events, startingPointTime, selectedEvent, setEvent }) => {
-    const currentDayEvents = events.filter(event => isDayContainEvent(event, startingPointTime))
+    const currentDayEvents = events.filter(event => isDayContainEvent(event, startingPointTime));
+    const allDayEvents = currentDayEvents.filter(event => event.allDay === true);
     const countOfHours = 24;
 
     const cells = [...Array(countOfHours)].map((_, i) => {
         const temp = [];
         currentDayEvents.forEach(event => {
-            if (+moment(event.start).format('H') === i) {
+            if (+moment(event.start).format('H') === i && event.allDay !== true) {
                 temp.push(event)
             }
         })
@@ -34,7 +35,15 @@ export const Day = ({ events, startingPointTime, selectedEvent, setEvent }) => {
                 <div className={styles.timelineWrapper}>
                     <div className={styles.alldayCellWrapper}>
                         <div className={styles.alldayCellText}>All day</div>
-                        <div className={styles.alldayCellEventWrapper}></div>
+                        <div className={styles.alldayCellEventWrapper}>
+                            {
+                                allDayEvents.map((event) => (
+                                    <div className={styles.eventTitle} onClick={() => setEvent(event)}>
+                                        {event.title}
+                                    </div>
+                                ))
+                            }
+                        </div>
                     </div>
                     {
                         cells.map((eventsList, i) => (
@@ -58,11 +67,9 @@ export const Day = ({ events, startingPointTime, selectedEvent, setEvent }) => {
                 {
                     selectedEvent ? (
                         <div>
-                            <h3>
-                                {
-                                    selectedEvent.title
-                                }
-                            </h3>
+                            <div>
+                                {selectedEvent.title}
+                            </div>
                         </div>
                     ) : (
                         <div className={styles.noEventMessage}>No event selected</div>
