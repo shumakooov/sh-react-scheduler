@@ -22,14 +22,22 @@ function Scheduler({ events }) {
 
   const startDay = startingPointTime.clone().startOf('month').startOf('week');
 
-  const openModalHandler = (methodName, eventForUpdate) => {
-    setMethod(methodName);
-    console.log('click', methodName);
-    setEvent(eventForUpdate || defaultEvent);
+  const openModalHandler = (methodName, eventForUpdate, dayItem) => {
     setShowModal(true);
+    openFormHandler(methodName, eventForUpdate, dayItem);
+  }
+
+  const openFormHandler = (methodName, eventForUpdate, dayItem) => {
+    setMethod(methodName);
+    setEvent(eventForUpdate || { ...defaultEvent, start: dayItem.startOf('hour').clone(), end: dayItem.startOf('hour').clone().add(1, 'hour') });
   }
 
   const cancelButtonHandler = () => {
+    setShowModal(false);
+    setEvent(null);
+  }
+
+  const removeButtonHandler = (eventToRemove) => {
     setShowModal(false);
     setEvent(null);
   }
@@ -41,13 +49,21 @@ function Scheduler({ events }) {
     }))
   }
 
-  const eventAction = (eventAction) => {
+  const eventAction = (eventToUpdate) => {
+    console.log(eventToUpdate)
     if (method === 'Create') {
+      console.log(event)
       events.push(event);
+      setShowModal(false);
+      setEvent(null);
     }
 
     if (method === 'Update') {
-
+      events.find(eventGlobal => eventGlobal.id === eventToUpdate.id).title = event.title;
+      events.find(eventGlobal => eventGlobal.id === eventToUpdate.id).start = event.start;
+      events.find(eventGlobal => eventGlobal.id === eventToUpdate.id).end = event.end;
+      setShowModal(false);
+      setEvent(null);
     }
   }
 
@@ -84,14 +100,12 @@ function Scheduler({ events }) {
                       className={styles.modalInputTitle}
                       value={event.title}
                       onChange={(e) => { changeEventHandler(e.target.value, 'title') }}
+                      placeholder="Title"
                     />
                     <div className={styles.modalButtonsWrapper}>
-                      <button
-                        onClick={() => cancelButtonHandler()}
-                      >
-                        Cancel
-                      </button>
-                      <button onClick={() => eventAction(method)}>{method}</button>
+                      <button onClick={() => cancelButtonHandler()}>Cancel</button>
+                      <button onClick={() => eventAction(event)}>{method}</button>
+                      <button onClick={() => removeButtonHandler(event)}>Remove</button>
                     </div>
                   </div>
                 </div>
@@ -126,7 +140,12 @@ function Scheduler({ events }) {
               startingPointTime={startingPointTime}
               events={events}
               selectedEvent={event}
-              setEvent={setEvent}
+              method={method}
+              cancelButtonHandler={cancelButtonHandler}
+              eventAction={eventAction}
+              removeButtonHandler={removeButtonHandler}
+              changeEventHandler={changeEventHandler}
+              openFormHandler={openFormHandler}
             />
           </div>
         ) : null

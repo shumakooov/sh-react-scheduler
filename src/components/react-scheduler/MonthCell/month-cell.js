@@ -11,7 +11,7 @@ export const MonthCell = ({ dayItem, events, startingPointTime, setView, setStar
             <div className={styles.rowInCell}>
                 <div
                     className={isSelectedMonth(dayItem, startingPointTime) ? `${styles.dayWrapper} ${styles.selectedMonthColor}` : styles.dayWrapper}
-                    onClick={() => openModalHandler('Create')}
+                    onClick={() => openModalHandler('Create', null, dayItem)}
                 >
                     <div className={isCurrentDay(dayItem) ? styles.currentDay : ''}>{dayItem.format('D')}</div>
                 </div>
