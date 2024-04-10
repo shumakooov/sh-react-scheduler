@@ -8,6 +8,10 @@ export const isSelectedMonth = (day, startingPointTime) => {
     return startingPointTime.isSame(day, 'month')
 }
 
+export const isDayContainCurrentTimestamp = (a, b) => {
+    return a.format('X') >= b.startOf('day').format('X') && a.format('X') < b.clone().endOf('day').format('X')
+}
+
 export const isDayContainEvent = (event, dayItem) => {
-    return moment(event.start).format('x') >= moment(dayItem).startOf('day').format('x') && moment(event.end).format('x') < moment(dayItem).clone().endOf('day').format('x')
+    return moment(event.start).format('X') >= moment(dayItem).startOf('day').format('X') && moment(event.end).format('X') < moment(dayItem).clone().endOf('day').format('X')
 }

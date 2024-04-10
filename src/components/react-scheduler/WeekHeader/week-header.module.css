@@ -1,0 +1,24 @@
+.daysOfWeek {
+    /* min-width: 140px;
+    min-height: 24px; */
+    width: 100%;
+    background-color: #fff;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    color: #646464;
+    padding-left: 4px;
+    border-right: 1px solid rgb(198, 195, 195);
+    border-bottom: 1px solid rgb(198, 195, 195);
+}
+
+.daysOfWeekText {
+    margin-left: 3px;
+}
+
+.daysOfWeekNumber {
+    font-size: 18px;
+    color: #000;
+    font-weight: 400;
+    padding-left: 2px;
+}

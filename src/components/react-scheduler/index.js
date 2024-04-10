@@ -4,8 +4,8 @@ import moment from "moment";
 import styles from './index.module.css'
 import { views } from '../../utils/constants'
 import { Day } from "./Day/day";
-import { CalendarGridHeader } from "./CalendarGridHeader/calendar-grid-header";
 import { Month } from "./Month/month";
+import { Week } from "./Week/week";
 
 const defaultEvent = {
   title: '',
@@ -50,9 +50,7 @@ function Scheduler({ events }) {
   }
 
   const eventAction = (eventToUpdate) => {
-    console.log(eventToUpdate)
     if (method === 'Create') {
-      console.log(event)
       events.push(event);
       setShowModal(false);
       setEvent(null);
@@ -65,6 +63,19 @@ function Scheduler({ events }) {
       setShowModal(false);
       setEvent(null);
     }
+  }
+
+  const updateEventByDragAndDrop = (eventToUpdate, newTimeStart) => {
+    let oldEndTime = moment(eventToUpdate.end);
+    let oldStartTime = moment(eventToUpdate.start);
+    let duration = moment.duration(oldEndTime.diff(oldStartTime));
+    let newStart = oldStartTime.hours(newTimeStart).minutes(0);
+    let newEnd = newStart.clone().add(duration);
+
+    let globalEventForUpdate = events.find(eventGlobal => eventGlobal.id === eventToUpdate.id);
+
+    globalEventForUpdate.start = newStart;
+    globalEventForUpdate.end = newEnd;
   }
 
   const prevHandler = () => {
@@ -112,7 +123,6 @@ function Scheduler({ events }) {
               ) : null
             }
             <div className={styles.monthWrapper}>
-              <CalendarGridHeader />
               <Month
                 startDay={startDay}
                 events={events}
@@ -128,8 +138,19 @@ function Scheduler({ events }) {
       {
         view === views.WEEK ? (
           <div>
-            <div>LIST</div>
-            <div>FORM</div>
+            <Week
+              startingPointTime={startingPointTime}
+              events={events}
+              // selectedEvent={event}
+              // method={method}
+              // cancelButtonHandler={cancelButtonHandler}
+              // eventAction={eventAction}
+              // removeButtonHandler={removeButtonHandler}
+              // changeEventHandler={changeEventHandler}
+              openFormHandler={openFormHandler}
+              updateEventByDragAndDrop={updateEventByDragAndDrop}
+              view={view}
+            />
           </div>
         ) : null
       }
@@ -146,6 +167,7 @@ function Scheduler({ events }) {
               removeButtonHandler={removeButtonHandler}
               changeEventHandler={changeEventHandler}
               openFormHandler={openFormHandler}
+              updateEventByDragAndDrop={updateEventByDragAndDrop}
             />
           </div>
         ) : null

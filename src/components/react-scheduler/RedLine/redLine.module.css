@@ -1,0 +1,8 @@
+.redLine {
+    background-color: #f00;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}

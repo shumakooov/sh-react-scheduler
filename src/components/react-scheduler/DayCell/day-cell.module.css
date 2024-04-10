@@ -1,0 +1,59 @@
+.dayCellWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.timeCanvas {
+    position: relative;
+    width: 100%;
+}
+
+.timelineCellWrapper {
+    box-sizing: border-box;
+    flex-grow: 1;
+    position: relative;
+    /* margin-left: 38px; */
+    /* padding: 0 2px; */
+    /* border-left: 1px solid rgb(198, 195, 195); */
+    border-right: 1px solid rgb(198, 195, 195);
+    &:not(:last-child) {
+        border-bottom: 1px solid rgb(198, 195, 195);
+    }
+}
+
+.cellTimeWrapper {
+    position: absolute;
+    font-size: 11px;
+    /* left: -34px; */
+    /* top: -2px; */
+    height: 100%;
+    width: 39px;
+    padding-left: 2px;
+    border-right: 1px solid rgb(198, 195, 195);
+    box-sizing: border-box;
+}
+
+.cellEventWrapper {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.eventTitle {
+    position: absolute;
+    box-sizing: border-box;
+    flex-grow: 1;
+    background-color: rgb(0, 145, 255);
+    border-radius: 3px;
+    margin: 1px 2px 1px 0;
+    font-size: 13px;
+    color: #fff;
+    padding: 3px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    /* min-width: 45px;
+    max-width: 100%; */
+    width: 100%;
+}

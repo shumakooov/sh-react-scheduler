@@ -1,0 +1,77 @@
+.formWrapper {
+    width: 350px;
+    background-color: #fff;
+    position: relative;
+    border-left: 1px solid rgb(198, 195, 195);
+}
+
+.inputTitle {
+    padding: 4px 14px;
+    font-size: .85rem;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgb(153, 153, 153);
+    box-sizing: border-box;
+}
+
+.selectTimeWrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 4px;
+}
+
+.dateWrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.timeWrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.listOfHoursStart {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 160px;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 1;
+    top: 20px;
+}
+
+.listOfHoursEnd {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    height: 160px;
+    overflow-y: scroll;
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+}
+
+
+.hoursButton {
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    height: 25px;
+}
+
+.buttonsWrapper {
+    padding: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.noEventMessage {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%,-50%);  
+}

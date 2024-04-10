@@ -8,11 +8,23 @@ const Header = ({ startingPointTime, prevHandler, todayHandler, nextHandler, set
             <div className={styles.container}>
                 <div className={styles.currentDate}>
                     {
-                        view === views.DAY ? (
-                            <div className={styles.currentDateText}>{startingPointTime.format('DD')}&nbsp;</div>
-                        ) : null
+                        view === views.WEEK ? (
+                            <div className={styles.currentDateText}>
+                                {startingPointTime.clone().startOf('week').add(1, 'day').format('D MMM')} - {startingPointTime.clone().endOf('week').add(1, 'day').format('D MMM YYYY')}
+                            </div>
+                        ) : (
+                            <>
+                                {
+                                    view === views.DAY ? (
+                                        <div className={styles.currentDateText}>{startingPointTime.format('D')}&nbsp;</div>
+                                    ) : null
+                                }
+                                <div className={styles.currentDateText}>{startingPointTime.format('MMMM YYYY')}</div>
+                            </>
+                        )
                     }
-                    <div className={styles.currentDateText}>{startingPointTime.format('MMMM YYYY')}</div>
+
+
                 </div>
                 <div>
                     <button className={styles.btnChangeDay} onClick={() => prevHandler()}> &lt; </button>
