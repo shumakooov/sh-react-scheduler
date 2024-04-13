@@ -3,12 +3,9 @@ import styles from './day-cell.module.css'
 import { HEIGHT_DAY_CELL, views } from "../../../utils/constants";
 import moment from "moment";
 
-export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEvents, openFormHandler, view }) => {
-    const cells = [...Array(countOfHours)];
-    const [droppedHour, setDroppedHour] = useState(null);
-
+export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEvents, openFormHandler, view, startingPointTime, setDroppedHour }) => {
     const onDragEndHandler = (e, event) => {
-        updateEventByDragAndDrop(event, droppedHour)
+        updateEventByDragAndDrop(event)
     }
 
     const onDropHandler = (e, i) => {
@@ -24,11 +21,12 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
         <div className={styles.dayCellWrapper}>
             <div className={styles.timeCanvas}>
                 {
-                    cells.map((_, i) => (
+                    [...Array(countOfHours)].map((_, i) => (
                         <div className={styles.timelineCellWrapper}
                             style={{ height: HEIGHT_DAY_CELL }}
                             onDrop={(e) => onDropHandler(e, i)}
                             onDragOver={onDragOverHandler}
+                            onDoubleClick={() => openFormHandler('Create', null, startingPointTime, i)}
                         >
                             {
                                 view === views.WEEK ? null : (
@@ -52,7 +50,7 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
                     return (
                         <div style={view === views.WEEK ? { left: 0, top: EVENT_TOP, height: EVENT_HEIGHT - 1 } : { left: 40, top: EVENT_TOP, height: EVENT_HEIGHT - 1 }}
                             className={styles.eventTitle}
-                            onClick={() => openFormHandler('Update', event)}
+                            onClick={() => openFormHandler('Update', event, null, null)}
                             name="event"
                             draggable
                             onDragEnd={(e) => onDragEndHandler(e, event)}

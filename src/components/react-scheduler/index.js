@@ -19,17 +19,19 @@ function Scheduler({ events }) {
   const [startingPointTime, setStartingPointTime] = useState(moment());
   const [isShowModal, setShowModal] = useState(false);
   const [method, setMethod] = useState(null);
+  const [droppedHour, setDroppedHour] = useState(null);
 
   const startDay = startingPointTime.clone().startOf('month').startOf('week');
 
   const openModalHandler = (methodName, eventForUpdate, dayItem) => {
     setShowModal(true);
-    openFormHandler(methodName, eventForUpdate, dayItem);
+    setMethod(methodName)
+    setEvent(eventForUpdate || { ...defaultEvent, start: dayItem.startOf('hour').clone(), end: dayItem.startOf('hour').clone().add(1, 'hour') });
   }
 
-  const openFormHandler = (methodName, eventForUpdate, dayItem) => {
+  const openFormHandler = (methodName, eventForUpdate, dayItem, clickedHour = dayItem.hours()) => {
     setMethod(methodName);
-    setEvent(eventForUpdate || { ...defaultEvent, start: dayItem.startOf('hour').clone(), end: dayItem.startOf('hour').clone().add(1, 'hour') });
+    setEvent(eventForUpdate || { ...defaultEvent, start: dayItem.clone().hours(clickedHour), end: dayItem.clone().hours(clickedHour).add(1, 'hour') });
   }
 
   const cancelButtonHandler = () => {
@@ -38,6 +40,10 @@ function Scheduler({ events }) {
   }
 
   const removeButtonHandler = (eventToRemove) => {
+    const index = events.indexOf(eventToRemove)
+    if (index > -1) {
+      events.splice(index, 1);
+    }
     setShowModal(false);
     setEvent(null);
   }
@@ -65,17 +71,18 @@ function Scheduler({ events }) {
     }
   }
 
-  const updateEventByDragAndDrop = (eventToUpdate, newTimeStart) => {
+  const updateEventByDragAndDrop = (eventToUpdate) => {
     let oldEndTime = moment(eventToUpdate.end);
     let oldStartTime = moment(eventToUpdate.start);
     let duration = moment.duration(oldEndTime.diff(oldStartTime));
-    let newStart = oldStartTime.hours(newTimeStart).minutes(0);
+    let newStart = oldStartTime.hours(droppedHour).minutes(0);
     let newEnd = newStart.clone().add(duration);
 
     let globalEventForUpdate = events.find(eventGlobal => eventGlobal.id === eventToUpdate.id);
 
     globalEventForUpdate.start = newStart;
     globalEventForUpdate.end = newEnd;
+    setDroppedHour(null);
   }
 
   const prevHandler = () => {
@@ -150,6 +157,7 @@ function Scheduler({ events }) {
               openFormHandler={openFormHandler}
               updateEventByDragAndDrop={updateEventByDragAndDrop}
               view={view}
+              setDroppedHour={setDroppedHour}
             />
           </div>
         ) : null
@@ -168,6 +176,7 @@ function Scheduler({ events }) {
               changeEventHandler={changeEventHandler}
               openFormHandler={openFormHandler}
               updateEventByDragAndDrop={updateEventByDragAndDrop}
+              setDroppedHour={setDroppedHour}
             />
           </div>
         ) : null

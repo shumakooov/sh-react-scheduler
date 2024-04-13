@@ -21,6 +21,10 @@
     }
 }
 
+.timelineCellWrapper:hover {
+    background-color: #eeeeee;
+}
+
 .cellTimeWrapper {
     position: absolute;
     font-size: 11px;
