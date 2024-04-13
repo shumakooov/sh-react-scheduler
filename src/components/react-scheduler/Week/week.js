@@ -6,29 +6,39 @@ import { WeekHeader } from "../WeekHeader/week-header";
 import { HEIGHT_DAY_CELL } from "../../../utils/constants";
 import { AllDayEventsCell } from "../AllDayEventsCell/all-day-events-cell";
 import { RedLine } from "../RedLine/redLine";
+import { Form } from "../Form/form";
 
-export const Week = ({ startingPointTime, events, updateEventByDragAndDrop, openFormHandler, view }) => {
+export const Week = ({ startingPointTime, events, selectedEvent, method, cancelButtonHandler, eventAction, removeButtonHandler, changeEventHandler, openFormHandler, updateEventByDragAndDrop, view }) => {
     const countOfHours = 24;
+    const countOfDays = 7;
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.eventsListWrapper}>
                 <div className={styles.timelineWrapper}>
-                    <div className={styles.weekHeader}>
-                        <WeekHeader startingPointTime={startingPointTime} />
+                    <div className={styles.wrapperWeekHeader}>
+                        <div className={styles.emptySquareInHeader} />
+                        <div className={styles.weekHeader}>
+                            <WeekHeader startingPointTime={startingPointTime} />
+                        </div>
                     </div>
 
                     <RedLine startingPointTime={startingPointTime} />
 
                     <div className={styles.weekCellsWrapper}>
-                        {/* {
-                            [...Array(countOfHours)].map((_, i) => (
-                                <div className={styles.cellTimeWrapper}>{`${i}`.padStart(2, '0')}:00</div>
-                            ))
-                        } */}
+                        <div className={styles.hoursCellsWrapper}>
+                            <div className={styles.cellTimeWrapper} style={{ height: HEIGHT_DAY_CELL }}>
+                                All day
+                            </div>
+                            {
+                                [...Array(countOfHours)].map((_, i) => (
+                                    <div className={styles.cellTimeWrapper} style={{ height: HEIGHT_DAY_CELL }}>{`${i}`.padStart(2, '0')}:00</div>
+                                ))
+                            }
+                        </div>
 
                         {
-                            [...Array(7)].map((_, i) => {
+                            [...Array(countOfDays)].map((_, i) => {
                                 let currentDayEvents = events.filter(event => isDayContainEvent(event, startingPointTime.clone().startOf('week').add(i + 1, 'day')));
                                 return (
                                     <div className={styles.weekDayColumn}>
@@ -56,17 +66,21 @@ export const Week = ({ startingPointTime, events, updateEventByDragAndDrop, open
             </div>
 
 
-            {/* <Form
-                startingPointTime={startingPointTime}
-                selectedEvent={selectedEvent}
-                changeEventHandler={changeEventHandler}
-                countOfHours={countOfHours}
-                cancelButtonHandler={cancelButtonHandler}
-                eventAction={eventAction}
-                method={method}
-                removeButtonHandler={removeButtonHandler}
-                openFormHandler={openFormHandler}
-            /> */}
+            {
+                selectedEvent ? (
+                    <Form
+                        startingPointTime={startingPointTime}
+                        selectedEvent={selectedEvent}
+                        changeEventHandler={changeEventHandler}
+                        countOfHours={countOfHours}
+                        cancelButtonHandler={cancelButtonHandler}
+                        eventAction={eventAction}
+                        method={method}
+                        removeButtonHandler={removeButtonHandler}
+                        openFormHandler={openFormHandler}
+                    />
+                ) : null
+            }
         </div>
     )
 }

@@ -21,9 +21,21 @@
     flex-direction: row;
 }
 
+.wrapperWeekHeader {
+    display: flex;
+    flex-direction: row;
+}
+
 .weekHeader {
     display: flex;
     flex-direction: row;
+    width: 100%;
+}
+
+.emptySquareInHeader {
+    width: 39px;
+    border-right: 1px solid rgb(198, 195, 195);
+    border-bottom: 1px solid rgb(198, 195, 195);
 }
 
 .weekDayColumn {
@@ -32,14 +44,22 @@
     width: 100%;
 }
 
+.hoursCellsWrapper {
+    height: 100%;
+}
+
 .cellTimeWrapper {
-    position: absolute;
+    /* position: absolute; */
     font-size: 11px;
     /* left: -34px; */
     /* top: -2px; */
     height: 100%;
     width: 39px;
+    box-sizing: border-box;
     padding-left: 2px;
     border-right: 1px solid rgb(198, 195, 195);
-    box-sizing: border-box;
+    border-bottom: 1px solid rgb(198, 195, 195);
+    &:last-child {
+        border-bottom: none;
+    }
 } 

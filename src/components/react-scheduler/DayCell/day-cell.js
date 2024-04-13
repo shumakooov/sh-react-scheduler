@@ -46,7 +46,7 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
                     let endTime = moment(event.end);
                     let duration = moment.duration(endTime.diff(startTime));
 
-                    const EVENT_TOP = startTime.hours() * HEIGHT_DAY_CELL + HEIGHT_DAY_CELL + startTime.minutes() / 2;
+                    const EVENT_TOP = startTime.hours() * HEIGHT_DAY_CELL + startTime.minutes() / 2;
                     const EVENT_HEIGHT = duration.hours() * HEIGHT_DAY_CELL + duration.minutes() / 2;
 
                     return (

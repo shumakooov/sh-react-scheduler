@@ -4,7 +4,8 @@
     border-bottom: 1px solid rgb(198, 195, 195);
     border-right: 1px solid rgb(198, 195, 195);
     display: flex;
-    min-height: 26px;
+    height: 29px;
+    box-sizing: border-box;
 }
 
 .alldayCellEventWrapper {

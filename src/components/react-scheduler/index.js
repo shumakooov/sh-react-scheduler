@@ -141,12 +141,12 @@ function Scheduler({ events }) {
             <Week
               startingPointTime={startingPointTime}
               events={events}
-              // selectedEvent={event}
-              // method={method}
-              // cancelButtonHandler={cancelButtonHandler}
-              // eventAction={eventAction}
-              // removeButtonHandler={removeButtonHandler}
-              // changeEventHandler={changeEventHandler}
+              selectedEvent={event}
+              method={method}
+              cancelButtonHandler={cancelButtonHandler}
+              eventAction={eventAction}
+              removeButtonHandler={removeButtonHandler}
+              changeEventHandler={changeEventHandler}
               openFormHandler={openFormHandler}
               updateEventByDragAndDrop={updateEventByDragAndDrop}
               view={view}
