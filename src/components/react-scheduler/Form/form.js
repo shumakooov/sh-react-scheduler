@@ -22,71 +22,75 @@ export const Form = ({ startingPointTime, selectedEvent, changeEventHandler, cou
             {
                 selectedEvent ? (
                     <div>
-                        <input
-                            className={styles.inputTitle}
-                            value={selectedEvent.title}
-                            onChange={(e) => { changeEventHandler(e.target.value, 'title') }}
-                            placeholder="Title"
-                        />
+                        <div className={styles.inputWrapper}>
+                            <input
+                                className={styles.inputTitle}
+                                value={selectedEvent.title}
+                                onChange={(e) => { changeEventHandler(e.target.value, 'title') }}
+                                placeholder="Title"
+                            />
+                        </div>
                         <div className={styles.selectTimeWrapper}>
                             <div className={styles.dateWrapper}>
-                                <span>start</span>
-                                <span>end</span>
+                                <span>Start:</span>
+                                <div>{moment(selectedEvent.start).format('dddd, D MMMM ')}</div>
+                                <select
+                                    className={styles.select}
+                                    onChange={(event) => setTimeStart(event.target.value)}
+                                >
+                                    {
+                                        [...new Array(countOfHours)].map((_, i) => (
+                                            <option
+                                                className={styles.selectOption}
+                                                value={i}
+                                            >
+                                                {`${i}`.padStart(2, '0')}:00
+                                            </option>
+                                        ))
+                                    }
+                                </select>
                             </div>
+
                             <div className={styles.dateWrapper}>
-                                <button>{moment(selectedEvent.start).format('dddd, D MMMM ')}</button>
-                                <button>{moment(selectedEvent.end).format('dddd, D MMMM ')}</button>
+                                <span>End:</span>
+                                <div>{moment(selectedEvent.end).format('dddd, D MMMM ')}</div>
+                                <select
+                                    className={styles.select}
+                                    onChange={(event) => setTimeEnd(event.target.value)}
+                                >
+                                    {
+                                        [...new Array(countOfHours)].map((_, i) => (
+                                            <option
+                                                className={styles.selectOption}
+                                                value={i}
+                                            >
+                                                {`${i}`.padStart(2, '0')}:00
+                                            </option>
+                                        ))
+                                    }
+                                </select>
                             </div>
-                            <div className={styles.timeWrapper}>
-                                <button onClick={() => setShowTimePickerStart(prevState => !prevState)}>{moment(selectedEvent.start).format('HH:mm')}</button>
-                                <button onClick={() => setShowTimePickerEnd(prevState => !prevState)}>{moment(selectedEvent.end).format('HH:mm')}</button>
-                                {
-                                    showTimePickerStart ? (
-                                        <ul className={styles.listOfHoursStart}>
-                                            {
-                                                [...new Array(countOfHours)].map((_, i) => (
-                                                    <li>
-                                                        <button
-                                                            className={styles.hoursButton}
-                                                            onClick={() => setTimeStart(i)}
-                                                        >
-                                                            {`${i}`.padStart(2, '0')}:00
-                                                        </button>
-                                                    </li>
-                                                ))
-                                            }
-                                        </ul>
-                                    ) : null
-                                }
-                                {
-                                    showTimePickerEnd ? (
-                                        <ul className={styles.listOfHoursEnd}>
-                                            {
-                                                [...new Array(countOfHours)].map((_, i) => (
-                                                    <li>
-                                                        <button
-                                                            className={styles.hoursButton}
-                                                            onClick={() => setTimeEnd(i)}
-                                                        >
-                                                            {`${i}`.padStart(2, '0')}:00
-                                                        </button>
-                                                    </li>
-                                                ))
-                                            }
-                                        </ul>
-                                    ) : null
-                                }
-                            </div>
+                            {/* <div className={styles.timeWrapper}>
+
+
+                            </div> */}
                         </div>
                         <div className={styles.buttonsWrapper}>
-                            <button onClick={() => cancelButtonHandler()}>Cancel</button>
-                            <button onClick={() => eventAction(selectedEvent)}>{method}</button>
-                            <button onClick={() => removeButtonHandler(selectedEvent)}>Remove</button>
+                            <button onClick={() => cancelButtonHandler()} className={styles.button}>Cancel</button>
+                            <button onClick={() => eventAction(selectedEvent)} className={styles.button}>{method}</button>
+                            <button onClick={() => removeButtonHandler(selectedEvent)} className={`${styles.button} ${styles.removeButton}`}>Remove</button>
                         </div>
                     </div>
                 ) : (
                     <>
-                        <button onClick={() => openFormHandler('Create', null, startingPointTime)}>Create new event</button>
+                        <div className={styles.createBtnWrapper}>
+                            <button
+                                className={styles.button}
+                                onClick={() => openFormHandler('Create', null, startingPointTime)}
+                            >
+                                Create new event
+                            </button>
+                        </div>
                         <div className={styles.noEventMessage}>No event selected</div>
                     </>
                 )
