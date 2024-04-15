@@ -17,7 +17,7 @@ export const Month = ({ startDay, events, startingPointTime, setView, setStartin
 
                     <MonthCell setView={setView}
                         dayItem={dayItem}
-                        events={events.filter(event => isDayContainEvent(event, dayItem))}
+                        events={events?.filter(event => isDayContainEvent(event, dayItem))}
                         startingPointTime={startingPointTime}
                         setStartingPointTime={setStartingPointTime}
                         openModalHandler={openModalHandler}

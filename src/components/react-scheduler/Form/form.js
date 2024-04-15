@@ -37,6 +37,7 @@ export const Form = ({ startingPointTime, selectedEvent, changeEventHandler, cou
                                 <select
                                     className={styles.select}
                                     onChange={(event) => setTimeStart(event.target.value)}
+                                    value={moment(selectedEvent.start).format('H')}
                                 >
                                     {
                                         [...new Array(countOfHours)].map((_, i) => (
@@ -57,6 +58,7 @@ export const Form = ({ startingPointTime, selectedEvent, changeEventHandler, cou
                                 <select
                                     className={styles.select}
                                     onChange={(event) => setTimeEnd(event.target.value)}
+                                    value={moment(selectedEvent.end).format('H')}
                                 >
                                     {
                                         [...new Array(countOfHours)].map((_, i) => (

@@ -7,7 +7,7 @@ import { AllDayEventsCell } from "../AllDayEventsCell/all-day-events-cell";
 import { DayCell } from "../DayCell/day-cell";
 
 export const Day = ({ events, startingPointTime, selectedEvent, method, cancelButtonHandler, eventAction, removeButtonHandler, changeEventHandler, openFormHandler, updateEventByDragAndDrop, setDroppedHour }) => {
-    const currentDayEvents = events.filter(event => isDayContainEvent(event, startingPointTime));
+    const currentDayEvents = events?.filter(event => isDayContainEvent(event, startingPointTime));
     const countOfHours = 24;
 
     return (
@@ -20,16 +20,18 @@ export const Day = ({ events, startingPointTime, selectedEvent, method, cancelBu
                         openFormHandler={openFormHandler}
                     />
 
-                    <RedLine startingPointTime={startingPointTime} />
+                    <div style={{ position: 'relative' }}>
+                        <RedLine startingPointTime={startingPointTime} />
 
-                    <DayCell
-                        countOfHours={countOfHours}
-                        updateEventByDragAndDrop={updateEventByDragAndDrop}
-                        currentDayEvents={currentDayEvents}
-                        openFormHandler={openFormHandler}
-                        startingPointTime={startingPointTime}
-                        setDroppedHour={setDroppedHour}
-                    />
+                        <DayCell
+                            countOfHours={countOfHours}
+                            updateEventByDragAndDrop={updateEventByDragAndDrop}
+                            currentDayEvents={currentDayEvents}
+                            openFormHandler={openFormHandler}
+                            startingPointTime={startingPointTime}
+                            setDroppedHour={setDroppedHour}
+                        />
+                    </div>
 
                 </div>
             </div>

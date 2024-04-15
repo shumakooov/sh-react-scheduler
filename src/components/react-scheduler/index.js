@@ -7,13 +7,21 @@ import { Day } from "./Day/day";
 import { Month } from "./Month/month";
 import { Week } from "./Week/week";
 
+
 const defaultEvent = {
   title: '',
   start: moment(),
   end: moment().add(1, 'hour'),
 }
 
+const defaultEvents = [];
+
 function Scheduler({ events }) {
+
+  if (events == undefined) {
+    events = defaultEvents;
+  }
+
   const [view, setView] = useState(views.MONTH);
   const [event, setEvent] = useState(null);
   const [startingPointTime, setStartingPointTime] = useState(moment());
@@ -22,6 +30,8 @@ function Scheduler({ events }) {
   const [droppedHour, setDroppedHour] = useState(null);
 
   const startDay = startingPointTime.clone().startOf('month').startOf('week');
+
+
 
   const openModalHandler = (methodName, eventForUpdate, dayItem) => {
     setShowModal(true);
@@ -57,6 +67,7 @@ function Scheduler({ events }) {
 
   const eventAction = (eventToUpdate) => {
     if (method === 'Create') {
+      console.log()
       events.push(event);
       setShowModal(false);
       setEvent(null);
@@ -90,7 +101,7 @@ function Scheduler({ events }) {
   }
 
   const todayHandler = () => {
-    setStartingPointTime(moment());
+    setStartingPointTime(moment().subtract(1, 'day'));
   }
 
   const nextHandler = () => {
@@ -121,9 +132,9 @@ function Scheduler({ events }) {
                       placeholder="Title"
                     />
                     <div className={styles.modalButtonsWrapper}>
-                      <button onClick={() => cancelButtonHandler()}>Cancel</button>
-                      <button onClick={() => eventAction(event)}>{method}</button>
-                      <button onClick={() => removeButtonHandler(event)}>Remove</button>
+                      <button onClick={() => cancelButtonHandler()} className={styles.button}>Cancel</button>
+                      <button onClick={() => eventAction(event)} className={styles.button}>{method}</button>
+                      <button onClick={() => removeButtonHandler(event)} className={`${styles.button} ${styles.removeButton}`}>Remove</button>
                     </div>
                   </div>
                 </div>

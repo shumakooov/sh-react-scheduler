@@ -39,7 +39,7 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
                 }
             </div>
             {
-                currentDayEvents.filter(event => event.allDay === false || event.allDay === undefined).map((event, i) => {
+                currentDayEvents?.filter(event => event.allDay === false || event.allDay === undefined).map((event, i) => {
                     let startTime = moment(event.start);
                     let endTime = moment(event.end);
                     let duration = moment.duration(endTime.diff(startTime));

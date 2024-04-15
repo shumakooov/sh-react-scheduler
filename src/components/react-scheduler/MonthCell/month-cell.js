@@ -16,7 +16,7 @@ export const MonthCell = ({ dayItem, events, startingPointTime, setView, setStar
                     <div className={isCurrentDay(dayItem) ? styles.currentDay : ''}>{dayItem.format('D')}</div>
                 </div>
                 {
-                    events.length > 2 ? (
+                    events?.length > 2 ? (
                         <div className={styles.showMoreTitle} onClick={() => { setView(views.DAY); setStartingPointTime(dayItem) }}>
                             + {events.length - 2} more
                         </div>
@@ -25,7 +25,7 @@ export const MonthCell = ({ dayItem, events, startingPointTime, setView, setStar
             </div>
             <div className={styles.eventWrapper}>
                 {
-                    events.slice(0, 2)
+                    events?.slice(0, 2)
                         .map(event => (
                             <div className={styles.eventTitle} title={event.title} onClick={() => openModalHandler('Update', event)}>
                                 {event.title}

@@ -15,3 +15,7 @@ export const isDayContainCurrentTimestamp = (a, b) => {
 export const isDayContainEvent = (event, dayItem) => {
     return moment(event.start).format('X') >= moment(dayItem).startOf('day').format('X') && moment(event.end).format('X') < moment(dayItem).clone().endOf('day').format('X')
 }
+
+export const isWeekContainEvent = (event, dayItem) => {
+    return moment(event.start).format('X') >= moment(dayItem).clone().startOf('week').add(1, 'day').format('X') && moment(event.end).format('X') < moment(dayItem).clone().endOf('week').add(1, 'day').format('X')
+}
