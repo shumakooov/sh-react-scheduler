@@ -12,11 +12,21 @@
 }
 
 .modalWrapper {
-    width: 300px;
     background-color: #fff;
     border: 1px solid rgb(198, 195, 195);
     border-radius: 4px;
     padding: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.infoWrapper {
+    width: 340px;
+}
+
+.repeatWrapper {
+    width: 200px;
+    padding-left: 30px;
 }
 
 .titleWrapper {
@@ -28,25 +38,27 @@
     margin-bottom: 20px;
 }
 
-.dateWrapper {
+.container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.checkboxWrapper {
+.containerRepeat {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    column-gap: 4px;
     margin-bottom: 20px;
 }
 
-.infoWrapper {
+.containerRadio {
+    margin-bottom: 5px;
+}
+
+.checkboxItem {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 20px;
 }
 
 .buttonsWrapper {
@@ -59,10 +71,36 @@
     border: none;
     padding: 6px 10px;
     color: #0091ff;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 4px;
 }
 
 .button:hover {
     background-color: #d6d6d6;
+}
+
+.select {
+    /* border: 1px solid rgb(198, 195, 195);
+    background-color: rgb(214, 214, 214);
+    border-radius: 4px; */
+}
+
+.select:focus {
+    /* background-color: rgb(161, 161, 161); */
+}
+
+.selectOption {
+    background-color: #fff;
+}
+
+.text {
+    font-size: 13px;
+}
+
+.textHeader {
+    margin-bottom: 5px;
+}
+
+.inputNumber {
+    width: 40px;
 }

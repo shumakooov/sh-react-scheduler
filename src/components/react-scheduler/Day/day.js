@@ -6,7 +6,7 @@ import { Form } from "../Form/form";
 import { AllDayEventsCell } from "../AllDayEventsCell/all-day-events-cell";
 import { DayCell } from "../DayCell/day-cell";
 
-export const Day = ({ events, startingPointTime, selectedEvent, method, cancelButtonHandler, eventAction, removeButtonHandler, changeEventHandler, openFormHandler, updateEventByDragAndDrop, setDroppedHour }) => {
+export const Day = ({ events, startingPointTime, selectedEvent, method, cancelButtonHandler, eventAction, removeButtonHandler, changeEventHandler, openFormHandler, updateEventByDragAndDrop, setDroppedHour, HEIGHT_DAY_CELL }) => {
     const currentDayEvents = events?.filter(event => isDayContainEvent(event, startingPointTime));
     const countOfHours = 24;
 
@@ -18,6 +18,7 @@ export const Day = ({ events, startingPointTime, selectedEvent, method, cancelBu
                     <AllDayEventsCell
                         currentDayEvents={currentDayEvents}
                         openFormHandler={openFormHandler}
+                        HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
                     />
 
                     <div style={{ position: 'relative' }}>
@@ -30,6 +31,7 @@ export const Day = ({ events, startingPointTime, selectedEvent, method, cancelBu
                             openFormHandler={openFormHandler}
                             startingPointTime={startingPointTime}
                             setDroppedHour={setDroppedHour}
+                            HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
                         />
                     </div>
 

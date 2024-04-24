@@ -7,7 +7,6 @@ import { Day } from "./Day/day";
 import { Month } from "./Month/month";
 import { Week } from "./Week/week";
 
-
 const defaultEvent = {
   title: '',
   start: moment(),
@@ -16,10 +15,16 @@ const defaultEvent = {
 
 const defaultEvents = [];
 
-function Scheduler({ events }) {
+function Scheduler({ events, cellsHeight }) {
 
-  if (events == undefined) {
+  let HEIGHT_DAY_CELL = 30;
+
+  if (events === undefined) {
     events = defaultEvents;
+  }
+
+  if (cellsHeight !== undefined) {
+    HEIGHT_DAY_CELL = cellsHeight;
   }
 
   const [view, setView] = useState(views.MONTH);
@@ -169,6 +174,7 @@ function Scheduler({ events }) {
               updateEventByDragAndDrop={updateEventByDragAndDrop}
               view={view}
               setDroppedHour={setDroppedHour}
+              HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
             />
           </div>
         ) : null
@@ -188,6 +194,7 @@ function Scheduler({ events }) {
               openFormHandler={openFormHandler}
               updateEventByDragAndDrop={updateEventByDragAndDrop}
               setDroppedHour={setDroppedHour}
+              HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
             />
           </div>
         ) : null

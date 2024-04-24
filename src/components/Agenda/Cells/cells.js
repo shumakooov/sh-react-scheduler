@@ -25,27 +25,35 @@ export const Cells = ({ currentWeekEvents, startingPointTime, openModal }) => {
                                 </div>
                                 <div className={styles.eventsWrapper}>
                                     {
-                                        currentDayEvents?.map((event, i) => (
-                                            <div className={styles.eventWrapper} onDoubleClick={() => openModal()}>
-                                                <div className={styles.eventPoint} style={{ background: priorities[event.priority] }}></div>
-                                                <div>
-                                                    <div className={styles.eventTitle}>
-                                                        {event.title}
-                                                    </div>
-                                                    <div className={styles.infoWrapper}>
-                                                        <div className={styles.infoItem}>
-                                                            {moment(event.start).format('HH:MM')} - {moment(event.end).format('HH:MM')}
+                                        currentDayEvents?.map((event, i) => {
+                                            return (
+                                                <div className={styles.eventWrapper} onDoubleClick={() => openModal(event)}>
+                                                    <div className={styles.eventPoint} style={{ background: priorities[event.priority] }}></div>
+                                                    <div>
+                                                        <div className={styles.eventTitle}>
+                                                            {event.title}
                                                         </div>
-                                                        <div className={styles.infoItem}>
-                                                            Assignee: {event.assignee}
-                                                        </div>
-                                                        <div className={styles.infoItem}>
-                                                            Priority: {event.priority}
+                                                        <div className={styles.infoWrapper}>
+                                                            <div className={styles.infoItem}>
+                                                                {
+                                                                    event.allDay ? (
+                                                                        <div>All day</div>
+                                                                    ) : (
+                                                                        <div>{moment(event.start).format('HH:mm')} - {moment(event.end).format('HH:mm')}</div>
+                                                                    )
+                                                                }
+                                                            </div>
+                                                            <div className={styles.infoItem}>
+                                                                Assignee: {event.assignee}
+                                                            </div>
+                                                            <div className={styles.infoItem}>
+                                                                Priority: {event.priority}
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        ))
+                                            )
+                                        })
                                     }
                                 </div>
                             </div>

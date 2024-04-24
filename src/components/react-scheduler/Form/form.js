@@ -33,44 +33,12 @@ export const Form = ({ startingPointTime, selectedEvent, changeEventHandler, cou
                         <div className={styles.selectTimeWrapper}>
                             <div className={styles.dateWrapper}>
                                 <span>Start:</span>
-                                <div>{moment(selectedEvent.start).format('dddd, D MMMM ')}</div>
-                                <select
-                                    className={styles.select}
-                                    onChange={(event) => setTimeStart(event.target.value)}
-                                    value={moment(selectedEvent.start).format('H')}
-                                >
-                                    {
-                                        [...new Array(countOfHours)].map((_, i) => (
-                                            <option
-                                                className={styles.selectOption}
-                                                value={i}
-                                            >
-                                                {`${i}`.padStart(2, '0')}:00
-                                            </option>
-                                        ))
-                                    }
-                                </select>
+                                <input type="datetime-local" defaultValue={moment(selectedEvent.start).format('YYYY-MM-DDTHH:mm')} onChange={(e) => { changeEventHandler(e.target.value, 'start') }} />
                             </div>
 
                             <div className={styles.dateWrapper}>
                                 <span>End:</span>
-                                <div>{moment(selectedEvent.end).format('dddd, D MMMM ')}</div>
-                                <select
-                                    className={styles.select}
-                                    onChange={(event) => setTimeEnd(event.target.value)}
-                                    value={moment(selectedEvent.end).format('H')}
-                                >
-                                    {
-                                        [...new Array(countOfHours)].map((_, i) => (
-                                            <option
-                                                className={styles.selectOption}
-                                                value={i}
-                                            >
-                                                {`${i}`.padStart(2, '0')}:00
-                                            </option>
-                                        ))
-                                    }
-                                </select>
+                                <input type="datetime-local" defaultValue={moment(selectedEvent.end).format('YYYY-MM-DDTHH:mm')} onChange={(e) => { changeEventHandler(e.target.value, 'end') }} />
                             </div>
                             {/* <div className={styles.timeWrapper}>
 

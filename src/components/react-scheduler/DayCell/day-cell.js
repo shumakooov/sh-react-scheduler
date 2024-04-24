@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from './day-cell.module.css'
-import { HEIGHT_DAY_CELL, views } from "../../../utils/constants";
 import moment from "moment";
+import { views } from "../../../utils/constants";
 
-export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEvents, openFormHandler, view, startingPointTime, setDroppedHour }) => {
+export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEvents, openFormHandler, view, startingPointTime, setDroppedHour, HEIGHT_DAY_CELL }) => {
     const onDragEndHandler = (e, event) => {
         updateEventByDragAndDrop(event)
     }

@@ -3,12 +3,11 @@ import styles from './week.module.css'
 import { isDayContainEvent } from "../../../utils/helpers";
 import { DayCell } from "../DayCell/day-cell";
 import { WeekHeader } from "../WeekHeader/week-header";
-import { HEIGHT_DAY_CELL } from "../../../utils/constants";
 import { AllDayEventsCell } from "../AllDayEventsCell/all-day-events-cell";
 import { RedLine } from "../RedLine/redLine";
 import { Form } from "../Form/form";
 
-export const Week = ({ startingPointTime, events, selectedEvent, method, cancelButtonHandler, eventAction, removeButtonHandler, changeEventHandler, openFormHandler, updateEventByDragAndDrop, view, setDroppedHour }) => {
+export const Week = ({ startingPointTime, events, selectedEvent, method, cancelButtonHandler, eventAction, removeButtonHandler, changeEventHandler, openFormHandler, updateEventByDragAndDrop, view, setDroppedHour, HEIGHT_DAY_CELL }) => {
     const countOfHours = 24;
     const countOfDays = 7;
 
@@ -48,6 +47,7 @@ export const Week = ({ startingPointTime, events, selectedEvent, method, cancelB
                                             currentDayEvents={currentDayEvents}
                                             openFormHandler={openFormHandler}
                                             view={view}
+                                            HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
                                         />
                                         <DayCell
                                             countOfHours={countOfHours}
@@ -57,6 +57,7 @@ export const Week = ({ startingPointTime, events, selectedEvent, method, cancelB
                                             view={view}
                                             startingPointTime={startingPointTime.clone().startOf('week').add(i + 1, 'day')}
                                             setDroppedHour={setDroppedHour}
+                                            HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
                                         />
                                     </div>
                                 )

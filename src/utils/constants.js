@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export const views = {
     MONTH: 'month',
     WEEK: 'week',
@@ -5,5 +7,3 @@ export const views = {
 }
 
 export const COMPONENT_RERENDER_TIME = 1000;
-
-export const HEIGHT_DAY_CELL = 30;

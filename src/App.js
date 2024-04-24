@@ -75,12 +75,43 @@ const myEvents = [
 const agendaEvents = [
   {
     id: 4,
+    title: "Сделать уборку",
+    start: new Date("2024-04-20T16:00"),
+    end: new Date("2024-04-20T17:30"),
+    assignee: 'Samantha Bright',
+    priority: 'medium',
+    allDay: true,
+    repeat: true,
+  },
+  {
+    id: 41,
     title: "Купить овощей",
     start: new Date("2024-04-20T14:00"),
     end: new Date("2024-04-20T15:00"),
     assignee: 'Samantha Bright',
     priority: 'high',
-
+    allDay: false,
+    repeat: true,
+  },
+  {
+    id: 42,
+    title: "Проверить почту",
+    start: new Date("2024-04-16T08:00"),
+    end: new Date("2024-04-16T08:30"),
+    assignee: 'Todd Hoffman',
+    priority: 'low',
+    allDay: false,
+    repeat: false,
+  },
+  {
+    id: 43,
+    title: "Согласовать дизайн",
+    start: new Date("2024-04-16T12:00"),
+    end: new Date("2024-04-16T13:00"),
+    assignee: 'Todd Hoffman',
+    priority: 'high',
+    allDay: true,
+    repeat: false,
   },
   {
     id: 5,
@@ -89,6 +120,8 @@ const agendaEvents = [
     end: new Date("2024-04-21T22:30"),
     assignee: 'John Heart',
     priority: 'medium',
+    allDay: true,
+    repeat: false,
   },
   {
     id: 6,
@@ -97,6 +130,8 @@ const agendaEvents = [
     end: new Date("2024-04-26T21:00"),
     assignee: 'John Heart',
     priority: 'high',
+    allDay: false,
+    repeat: false,
   },
   {
     id: 7,
@@ -105,6 +140,8 @@ const agendaEvents = [
     end: new Date("2024-04-26T18:00"),
     assignee: 'Todd Hoffman',
     priority: 'low',
+    allDay: false,
+    repeat: false,
   },
   {
     id: 8,
@@ -113,16 +150,21 @@ const agendaEvents = [
     end: new Date("2024-04-26T19:00"),
     assignee: 'Sandra Johnson',
     priority: 'medium',
+    allDay: false,
+    repeat: false,
   },
 ]
 
 function App() {
   return (
     <div className="App">
-      <div style={{ marginBottom: 50 }}>
-        <Agenda events={agendaEvents} />
+      <div style={{ marginBottom: 350 }}>
+        <Scheduler
+          events={myEvents}
+        // cellsHeight={60}
+        />
       </div>
-      <Scheduler events={myEvents} />
+      <Agenda events={agendaEvents} />
     </div>
   );
 }

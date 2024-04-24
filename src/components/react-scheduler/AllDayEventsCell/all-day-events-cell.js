@@ -1,8 +1,8 @@
 import React from "react";
 import styles from './all-day-events-cell.module.css'
-import { HEIGHT_DAY_CELL, views } from "../../../utils/constants";
+import { views } from "../../../utils/constants";
 
-export const AllDayEventsCell = ({ currentDayEvents, openFormHandler, view }) => {
+export const AllDayEventsCell = ({ currentDayEvents, openFormHandler, view, HEIGHT_DAY_CELL }) => {
     const allDayEvents = currentDayEvents?.filter(event => event.allDay === true);
 
     return (

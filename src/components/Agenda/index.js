@@ -9,6 +9,7 @@ import { Modal } from "./Modal/modal";
 function Agenda({ events }) {
     const [startingPointTime, setStartingPointTime] = useState(moment());
     const [isShowModal, setShowModal] = useState(false);
+    const [event, setEvent] = useState(null);
 
     const currentWeekEvents = events?.filter(event => isWeekContainEvent(event, startingPointTime));
 
@@ -24,13 +25,35 @@ function Agenda({ events }) {
         setStartingPointTime(prev => prev.clone().add(1, 'week'));
     }
 
-    const openModal = () => {
+    const openModal = (event) => {
         setShowModal(true);
+        setEvent(event)
     }
 
     const cancelButtonHandler = () => {
         setShowModal(false);
-        // setEvent(null);
+        setEvent(null);
+    }
+
+    const updateEventHandler = () => {
+        let globalEventForUpdate = events.find(eventGlobal => eventGlobal.id === event.id);
+
+        globalEventForUpdate.title = event.title;
+        globalEventForUpdate.start = event.start;
+        globalEventForUpdate.end = event.end;
+        globalEventForUpdate.allDay = event.allDay;
+        // globalEventForUpdate.repeat = event.repeat;
+        globalEventForUpdate.assignee = event.assignee;
+        globalEventForUpdate.priority = event.priority;
+        setShowModal(false);
+        setEvent(null);
+    }
+
+    const changeEventHandler = (value, field) => {
+        setEvent(prevState => ({
+            ...prevState,
+            [field]: value
+        }))
     }
 
     return (
@@ -51,6 +74,9 @@ function Agenda({ events }) {
             <Modal
                 cancelButtonHandler={cancelButtonHandler}
                 isShowModal={isShowModal}
+                event={event}
+                changeEventHandler={changeEventHandler}
+                updateEventHandler={updateEventHandler}
             />
         </div>
     );
