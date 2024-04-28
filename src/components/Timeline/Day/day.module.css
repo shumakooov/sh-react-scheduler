@@ -1,0 +1,29 @@
+.wrapper {
+    /* background-color: rgb(198, 195, 195); */
+    background-color: #fff;
+    flex-grow: 1;
+    display: flex;
+}
+
+.eventsListWrapper {
+    flex-grow: 1;
+}
+
+.timelineWrapper {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.weekCellsWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.weekDayColumn {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

@@ -1,5 +1,6 @@
 import './App.css';
 import Agenda from './components/Agenda';
+import Timeline from './components/Timeline';
 import Scheduler from './components/react-scheduler';
 
 const myEvents = [
@@ -82,6 +83,7 @@ const agendaEvents = [
     priority: 'medium',
     allDay: true,
     repeat: true,
+    resourceId: 2,
   },
   {
     id: 41,
@@ -92,6 +94,7 @@ const agendaEvents = [
     priority: 'high',
     allDay: false,
     repeat: true,
+    resourceId: 2,
   },
   {
     id: 42,
@@ -102,6 +105,7 @@ const agendaEvents = [
     priority: 'low',
     allDay: false,
     repeat: false,
+    resourceId: 1,
   },
   {
     id: 43,
@@ -112,6 +116,7 @@ const agendaEvents = [
     priority: 'high',
     allDay: true,
     repeat: false,
+    resourceId: 2,
   },
   {
     id: 5,
@@ -122,16 +127,18 @@ const agendaEvents = [
     priority: 'medium',
     allDay: true,
     repeat: false,
+    resourceId: 1,
   },
   {
     id: 6,
     title: "Пить много воды (целый день)",
-    start: new Date("2024-04-26"),
-    end: new Date("2024-04-26T21:00"),
+    start: new Date("2024-04-26T17:00"),
+    end: new Date("2024-04-26T17:30"),
     assignee: 'John Heart',
     priority: 'high',
     allDay: false,
     repeat: false,
+    resourceId: 1,
   },
   {
     id: 7,
@@ -142,17 +149,30 @@ const agendaEvents = [
     priority: 'low',
     allDay: false,
     repeat: false,
+    resourceId: 2,
   },
   {
     id: 8,
     title: "Приготовить ужин",
     start: new Date("2024-04-26T18:00"),
-    end: new Date("2024-04-26T19:00"),
+    end: new Date("2024-04-26T21:50"),
     assignee: 'Sandra Johnson',
     priority: 'medium',
     allDay: false,
     repeat: false,
+    resourceId: 1,
   },
+]
+
+const resources = [
+  {
+    id: 1,
+    resource: 'Шумаков Глеб'
+  },
+  {
+    id: 2,
+    resource: 'Пименов Александр'
+  }
 ]
 
 function App() {
@@ -164,6 +184,15 @@ function App() {
         // cellsHeight={60}
         />
       </div>
+
+      <div style={{ marginBottom: 350 }}>
+        <Timeline
+          events={agendaEvents}
+          resources={resources}
+        // fullTimeScale={true}
+        />
+      </div>
+
       <Agenda events={agendaEvents} />
     </div>
   );

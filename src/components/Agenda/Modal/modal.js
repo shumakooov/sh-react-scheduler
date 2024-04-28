@@ -18,7 +18,7 @@ const repeatItems = [
 
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 
-export const Modal = ({ cancelButtonHandler, isShowModal, event, changeEventHandler, updateEventHandler }) => {
+export const Modal = ({ cancelButtonHandler, isShowModal, event, changeEventHandler, updateEventHandler, modalView, resources }) => {
     return (
         <>
             {
@@ -55,25 +55,52 @@ export const Modal = ({ cancelButtonHandler, isShowModal, event, changeEventHand
                                         <div className={styles.text}>Assignee</div>
                                         <input placeholder="Assignee" value={event.assignee} onChange={(e) => { changeEventHandler(e.target.value, 'assignee') }} />
                                     </div>
-                                    <div>
-                                        <div className={styles.text}>Priority</div>
-                                        <select
-                                            className={styles.select}
-                                            onChange={(e) => { changeEventHandler(e.target.value, 'priority') }}
-                                            value={event.priority}
-                                        >
-                                            {
-                                                priorities.map((priority, i) => (
-                                                    <option
-                                                        className={styles.selectOption}
-                                                        value={Object.keys(priority)}
-                                                    >
-                                                        {Object.values(priority)}
-                                                    </option>
-                                                ))
-                                            }
-                                        </select>
-                                    </div>
+                                    {
+                                        modalView === 'Agenda' ? (
+                                            <div>
+                                                <div className={styles.text}>Priority</div>
+                                                <select
+                                                    className={styles.select}
+                                                    onChange={(e) => { changeEventHandler(e.target.value, 'priority') }}
+                                                    value={event.priority}
+                                                >
+                                                    {
+                                                        priorities.map((priority, i) => (
+                                                            <option
+                                                                className={styles.selectOption}
+                                                                value={Object.keys(priority)}
+                                                            >
+                                                                {Object.values(priority)}
+                                                            </option>
+                                                        ))
+                                                    }
+                                                </select>
+                                            </div>
+                                        ) : null
+                                    }
+                                    {
+                                        modalView === 'Timeline' ? (
+                                            <div>
+                                                <div className={styles.text}>Resource</div>
+                                                <select
+                                                    className={styles.select}
+                                                    onChange={(e) => { changeEventHandler(resources.find((resource) => resource.resource == e.target.value).id, 'resourceId') }}
+                                                    defaultValue={resources.find((resource) => resource.id == event.resourceId).resource}
+                                                >
+                                                    {
+                                                        resources.map((resource, i) => (
+                                                            <option
+                                                                className={styles.selectOption}
+                                                                value={resource.resource}
+                                                            >
+                                                                {resource.resource}
+                                                            </option>
+                                                        ))
+                                                    }
+                                                </select>
+                                            </div>
+                                        ) : null
+                                    }
                                 </div>
                                 <div className={styles.buttonsWrapper}>
                                     <button className={styles.button} onClick={() => updateEventHandler()}>DONE</button>
