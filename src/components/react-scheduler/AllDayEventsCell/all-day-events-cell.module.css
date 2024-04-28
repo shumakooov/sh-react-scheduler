@@ -1,11 +1,10 @@
 .alldayCellWrapper {
-    flex-grow: 1;
     position: relative;
     border-bottom: 1px solid rgb(198, 195, 195);
     border-right: 1px solid rgb(198, 195, 195);
     display: flex;
-    height: 29px;
     box-sizing: border-box;
+    width: 100%;
 }
 
 .alldayCellEventWrapper {
@@ -13,17 +12,7 @@
     flex-direction: row;
 }
 
-.alldayCellText {
-    font-size: 11px;
-    border-right: 1px solid rgb(198, 195, 195);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-}
-
 .eventTitle {
-    position: absolute;
     box-sizing: border-box;
     flex-grow: 1;
     background-color: rgb(0, 145, 255);
@@ -36,7 +25,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
-    /* min-width: 45px;
-    max-width: 100%; */
     width: 100%;
 }

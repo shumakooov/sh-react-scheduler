@@ -12,9 +12,6 @@
     box-sizing: border-box;
     flex-grow: 1;
     position: relative;
-    /* margin-left: 38px; */
-    /* padding: 0 2px; */
-    /* border-left: 1px solid rgb(198, 195, 195); */
     border-right: 1px solid rgb(198, 195, 195);
     &:not(:last-child) {
         border-bottom: 1px solid rgb(198, 195, 195);
@@ -23,18 +20,6 @@
 
 .timelineCellWrapper:hover {
     background-color: #eeeeee;
-}
-
-.cellTimeWrapper {
-    position: absolute;
-    font-size: 11px;
-    /* left: -34px; */
-    /* top: -2px; */
-    height: 100%;
-    width: 39px;
-    padding-left: 2px;
-    border-right: 1px solid rgb(198, 195, 195);
-    box-sizing: border-box;
 }
 
 .cellEventWrapper {
@@ -57,7 +42,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;
-    /* min-width: 45px;
-    max-width: 100%; */
     width: 100%;
 }

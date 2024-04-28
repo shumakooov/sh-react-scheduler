@@ -1,20 +1,16 @@
 import React from "react";
 import styles from './all-day-events-cell.module.css'
-import { views } from "../../../utils/constants";
 
-export const AllDayEventsCell = ({ currentDayEvents, openFormHandler, view, HEIGHT_DAY_CELL }) => {
-    const allDayEvents = currentDayEvents?.filter(event => event.allDay === true);
+export const AllDayEventsCell = ({ currentDayEvents, currentResourceAndDayEvents, openFormHandler, view, HEIGHT_DAY_CELL }) => {
+    let eventsToMap;
+
+    currentResourceAndDayEvents ? eventsToMap = currentResourceAndDayEvents?.filter(event => event.allDay === true) : eventsToMap = currentDayEvents?.filter(event => event.allDay === true);
 
     return (
-        <div className={styles.alldayCellWrapper}>
-            {
-                view === views.WEEK ? null : (
-                    <div className={styles.alldayCellText}>All day</div>
-                )
-            }
-            <div className={styles.alldayCellEventWrapper} style={{ height: HEIGHT_DAY_CELL }}>
+        <div className={styles.alldayCellWrapper} style={{ height: HEIGHT_DAY_CELL }}>
+            <div className={styles.alldayCellEventWrapper}>
                 {
-                    allDayEvents?.map((event) => (
+                    eventsToMap?.map((event) => (
                         <div className={styles.eventTitle} onClick={() => openFormHandler('Update', event)}>
                             {event.title}
                         </div>

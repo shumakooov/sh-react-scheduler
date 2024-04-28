@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./header.module.css"
 import { views } from "../../../utils/constants";
 
-const Header = ({ startingPointTime, prevHandler, todayHandler, nextHandler, setView, view }) => {
+const Header = ({ startingPointTime, prevHandler, todayHandler, nextHandler, setView, view, resources }) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
@@ -31,11 +31,15 @@ const Header = ({ startingPointTime, prevHandler, todayHandler, nextHandler, set
                     <button className={`${styles.btnChangeDay} ${styles.btnChangeDayToday}`} onClick={() => todayHandler()}>Today</button>
                     <button className={styles.btnChangeDay} onClick={() => nextHandler()}> &gt; </button>
                 </div>
-                <div>
-                    <button className={view === views.MONTH ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => setView(views.MONTH)}>Month</button>
-                    <button className={view === views.WEEK ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => setView(views.WEEK)}>Week</button>
-                    <button className={view === views.DAY ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => setView(views.DAY)}>Day</button>
-                </div>
+                {
+                    !resources ? (
+                        <div>
+                            <button className={view === views.MONTH ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => setView(views.MONTH)}>Month</button>
+                            <button className={view === views.WEEK ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => setView(views.WEEK)}>Week</button>
+                            <button className={view === views.DAY ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => setView(views.DAY)}>Day</button>
+                        </div>
+                    ) : null
+                }
             </div>
         </div>
     )

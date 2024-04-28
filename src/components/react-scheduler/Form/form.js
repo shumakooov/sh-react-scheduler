@@ -2,20 +2,7 @@ import React, { useState } from "react";
 import styles from './form.module.css'
 import moment from "moment";
 
-export const Form = ({ startingPointTime, selectedEvent, changeEventHandler, countOfHours, cancelButtonHandler, eventAction, method, removeButtonHandler, openFormHandler }) => {
-    const [showTimePickerStart, setShowTimePickerStart] = useState(false);
-    const [showTimePickerEnd, setShowTimePickerEnd] = useState(false);
-    const setTimeStart = (i) => {
-        setShowTimePickerStart(false);
-        const time = moment(selectedEvent.start).hour(i).format('YYYY-MM-DDTHH:mm')
-        changeEventHandler(time, 'start')
-    }
-
-    const setTimeEnd = (i) => {
-        setShowTimePickerEnd(false);
-        const time = moment(selectedEvent.end).hour(i).format('YYYY-MM-DDTHH:mm')
-        changeEventHandler(time, 'end')
-    }
+export const Form = ({ startingPointTime, selectedEvent, changeEventHandler, cancelButtonHandler, eventAction, method, removeButtonHandler, openFormHandler, resources }) => {
 
     return (
         <div className={styles.formWrapper}>
@@ -40,11 +27,33 @@ export const Form = ({ startingPointTime, selectedEvent, changeEventHandler, cou
                                 <span>End:</span>
                                 <input type="datetime-local" defaultValue={moment(selectedEvent.end).format('YYYY-MM-DDTHH:mm')} onChange={(e) => { changeEventHandler(e.target.value, 'end') }} />
                             </div>
-                            {/* <div className={styles.timeWrapper}>
-
-
-                            </div> */}
                         </div>
+
+                        <div>
+                            {
+                                resources ? (
+                                    <div className={styles.dateWrapper}>
+                                        <span>Resource:</span>
+                                        <select
+                                            onChange={(e) => { changeEventHandler(resources.find((resource) => resource.resource == e.target.value).id, 'resourceId') }}
+                                            defaultValue={resources.find((resource) => resource.id == selectedEvent.resourceId).resource}
+                                        >
+                                            {
+                                                resources.map((resource, i) => (
+                                                    <option
+                                                        className={styles.selectOption}
+                                                        value={resource.resource}
+                                                    >
+                                                        {resource.resource}
+                                                    </option>
+                                                ))
+                                            }
+                                        </select>
+                                    </div>
+                                ) : null
+                            }
+                        </div>
+
                         <div className={styles.buttonsWrapper}>
                             <button onClick={() => cancelButtonHandler()} className={styles.button}>Cancel</button>
                             <button onClick={() => eventAction(selectedEvent)} className={styles.button}>{method}</button>

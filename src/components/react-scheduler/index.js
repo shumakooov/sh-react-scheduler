@@ -15,7 +15,7 @@ const defaultEvent = {
 
 const defaultEvents = [];
 
-function Scheduler({ events, cellsHeight }) {
+function Scheduler({ events, cellsHeight, resources }) {
 
   let HEIGHT_DAY_CELL = 30;
 
@@ -27,7 +27,7 @@ function Scheduler({ events, cellsHeight }) {
     HEIGHT_DAY_CELL = cellsHeight;
   }
 
-  const [view, setView] = useState(views.MONTH);
+  const [view, setView] = useState(resources ? views.DAY : views.MONTH);
   const [event, setEvent] = useState(null);
   const [startingPointTime, setStartingPointTime] = useState(moment());
   const [isShowModal, setShowModal] = useState(false);
@@ -35,8 +35,6 @@ function Scheduler({ events, cellsHeight }) {
   const [droppedHour, setDroppedHour] = useState(null);
 
   const startDay = startingPointTime.clone().startOf('month').startOf('week');
-
-
 
   const openModalHandler = (methodName, eventForUpdate, dayItem) => {
     setShowModal(true);
@@ -82,6 +80,7 @@ function Scheduler({ events, cellsHeight }) {
       events.find(eventGlobal => eventGlobal.id === eventToUpdate.id).title = event.title;
       events.find(eventGlobal => eventGlobal.id === eventToUpdate.id).start = event.start;
       events.find(eventGlobal => eventGlobal.id === eventToUpdate.id).end = event.end;
+      events.find(eventGlobal => eventGlobal.id === eventToUpdate.id).resourceId = event.resourceId;
       setShowModal(false);
       setEvent(null);
     }
@@ -106,7 +105,7 @@ function Scheduler({ events, cellsHeight }) {
   }
 
   const todayHandler = () => {
-    setStartingPointTime(moment().subtract(1, 'day'));
+    view === views.WEEK ? setStartingPointTime(moment().subtract(1, 'day')) : setStartingPointTime(moment());
   }
 
   const nextHandler = () => {
@@ -122,6 +121,7 @@ function Scheduler({ events, cellsHeight }) {
         nextHandler={nextHandler}
         setView={setView}
         view={view}
+        resources={resources}
       />
       {
         view === views.MONTH ? (
@@ -195,6 +195,7 @@ function Scheduler({ events, cellsHeight }) {
               updateEventByDragAndDrop={updateEventByDragAndDrop}
               setDroppedHour={setDroppedHour}
               HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
+              resources={resources}
             />
           </div>
         ) : null

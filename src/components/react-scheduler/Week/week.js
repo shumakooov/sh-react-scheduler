@@ -36,11 +36,10 @@ export const Week = ({ startingPointTime, events, selectedEvent, method, cancelB
 
                         <RedLine startingPointTime={startingPointTime} />
 
-                        {/* TODO: вставить redline в day-cell ?? */}
-
                         {
                             [...Array(countOfDays)].map((_, i) => {
                                 let currentDayEvents = events?.filter(event => isDayContainEvent(event, startingPointTime.clone().startOf('week').add(i + 1, 'day')));
+
                                 return (
                                     <div className={styles.weekDayColumn}>
                                         <AllDayEventsCell
@@ -74,7 +73,6 @@ export const Week = ({ startingPointTime, events, selectedEvent, method, cancelB
                         startingPointTime={startingPointTime}
                         selectedEvent={selectedEvent}
                         changeEventHandler={changeEventHandler}
-                        countOfHours={countOfHours}
                         cancelButtonHandler={cancelButtonHandler}
                         eventAction={eventAction}
                         method={method}

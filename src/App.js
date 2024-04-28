@@ -100,7 +100,7 @@ const agendaEvents = [
     id: 42,
     title: "Проверить почту",
     start: new Date("2024-04-16T08:00"),
-    end: new Date("2024-04-16T08:30"),
+    end: new Date("2024-04-16T08:40"),
     assignee: 'Todd Hoffman',
     priority: 'low',
     allDay: false,
@@ -160,19 +160,23 @@ const agendaEvents = [
     priority: 'medium',
     allDay: false,
     repeat: false,
-    resourceId: 1,
+    resourceId: 3,
   },
 ]
 
 const resources = [
   {
     id: 1,
-    resource: 'Шумаков Глеб'
+    resource: 'Окно 1'
   },
   {
     id: 2,
-    resource: 'Пименов Александр'
-  }
+    resource: 'Окно 2'
+  },
+  {
+    id: 3,
+    resource: 'Окно 3'
+  },
 ]
 
 function App() {
@@ -180,7 +184,9 @@ function App() {
     <div className="App">
       <div style={{ marginBottom: 350 }}>
         <Scheduler
-          events={myEvents}
+          // events={myEvents}
+          events={agendaEvents}
+          resources={resources}
         // cellsHeight={60}
         />
       </div>

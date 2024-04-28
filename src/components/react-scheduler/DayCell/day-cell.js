@@ -3,7 +3,11 @@ import styles from './day-cell.module.css'
 import moment from "moment";
 import { views } from "../../../utils/constants";
 
-export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEvents, openFormHandler, view, startingPointTime, setDroppedHour, HEIGHT_DAY_CELL }) => {
+export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEvents, currentResourceAndDayEvents, openFormHandler, view, startingPointTime, setDroppedHour, HEIGHT_DAY_CELL }) => {
+    let eventsToMap;
+
+    currentResourceAndDayEvents ? eventsToMap = currentResourceAndDayEvents : eventsToMap = currentDayEvents;
+
     const onDragEndHandler = (e, event) => {
         updateEventByDragAndDrop(event)
     }
@@ -28,18 +32,13 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
                             onDragOver={onDragOverHandler}
                             onDoubleClick={() => openFormHandler('Create', null, startingPointTime, i)}
                         >
-                            {
-                                view === views.WEEK ? null : (
-                                    <div className={styles.cellTimeWrapper}>{`${i}`.padStart(2, '0')}:00</div>
-                                )
-                            }
                             <div className={styles.cellEventWrapper} />
                         </div>
                     ))
                 }
             </div>
             {
-                currentDayEvents?.filter(event => event.allDay === false || event.allDay === undefined).map((event, i) => {
+                eventsToMap?.filter(event => event.allDay === false || event.allDay === undefined).map((event, i) => {
                     let startTime = moment(event.start);
                     let endTime = moment(event.end);
                     let duration = moment.duration(endTime.diff(startTime));
@@ -48,7 +47,7 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
                     const EVENT_HEIGHT = duration.hours() * HEIGHT_DAY_CELL + duration.minutes() / 2;
 
                     return (
-                        <div style={view === views.WEEK ? { left: 0, top: EVENT_TOP, height: EVENT_HEIGHT - 1 } : { left: 40, top: EVENT_TOP, height: EVENT_HEIGHT - 1 }}
+                        <div style={{ top: EVENT_TOP, height: EVENT_HEIGHT - 1 }}
                             className={styles.eventTitle}
                             onClick={() => openFormHandler('Update', event, null, null)}
                             name="event"

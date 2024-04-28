@@ -64,20 +64,6 @@
     left: 227px;
 }
 
-.select {
-    border: 1px solid rgb(198, 195, 195);
-    background-color: rgb(214, 214, 214);
-    border-radius: 4px;
-}
-
-.select:focus {
-    background-color: rgb(161, 161, 161);
-}
-
-.selectOption {
-    background-color: #fff;
-}
-
 .buttonsWrapper {
     padding: 8px;
     display: flex;
