@@ -46,18 +46,6 @@
     background-color: #eeeeee;
 }
 
-/* .cellTimeWrapper {
-    position: relative;
-    font-size: 11px;
-    left: -34px;
-    top: -2px;
-    height: 100%;
-    width: 39px;
-    padding-left: 2px;
-    border-right: 1px solid rgb(198, 195, 195);
-    box-sizing: border-box;
-} */
-
 .cellEventWrapper {
     display: flex;
     flex-direction: row;

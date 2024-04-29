@@ -1,9 +1,8 @@
 import React from "react";
 import styles from './day-cell.module.css'
 import moment from "moment";
-import { views } from "../../../utils/constants";
 
-export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEvents, currentResourceAndDayEvents, openFormHandler, view, startingPointTime, setDroppedHour, HEIGHT_DAY_CELL }) => {
+export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEvents, currentResourceAndDayEvents, openFormHandler, startingPointTime, setDroppedHour, HEIGHT_DAY_CELL, resource }) => {
     let eventsToMap;
 
     currentResourceAndDayEvents ? eventsToMap = currentResourceAndDayEvents : eventsToMap = currentDayEvents;
@@ -30,7 +29,7 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
                             style={{ height: HEIGHT_DAY_CELL }}
                             onDrop={(e) => onDropHandler(e, i)}
                             onDragOver={onDragOverHandler}
-                            onDoubleClick={() => openFormHandler('Create', null, startingPointTime, i)}
+                            onDoubleClick={() => openFormHandler('Create', null, startingPointTime, i, resource)}
                         >
                             <div className={styles.cellEventWrapper} />
                         </div>
@@ -55,6 +54,13 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
                             onDragEnd={(e) => onDragEndHandler(e, event)}
                         >
                             {event.title}
+                            {
+                                EVENT_HEIGHT >= 40 ? (
+                                    <div className={styles.eventTime}>
+                                        {moment(event.start).format('HH:mm')} - {moment(event.end).format('HH:mm')}
+                                    </div>
+                                ) : null
+                            }
                         </div>
                     )
                 })

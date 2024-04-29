@@ -7,6 +7,10 @@ import { Day } from "./Day/day";
 import { Month } from "./Month/month";
 import { Week } from "./Week/week";
 
+function getRandomIdInRange(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const defaultEvent = {
   title: '',
   start: moment(),
@@ -39,12 +43,12 @@ function Scheduler({ events, cellsHeight, resources }) {
   const openModalHandler = (methodName, eventForUpdate, dayItem) => {
     setShowModal(true);
     setMethod(methodName)
-    setEvent(eventForUpdate || { ...defaultEvent, start: dayItem.startOf('hour').clone(), end: dayItem.startOf('hour').clone().add(1, 'hour') });
+    setEvent(eventForUpdate || { ...defaultEvent, id: getRandomIdInRange(0, 10000), start: dayItem.startOf('hour').clone(), end: dayItem.startOf('hour').clone().add(1, 'hour') });
   }
 
-  const openFormHandler = (methodName, eventForUpdate, dayItem, clickedHour = dayItem.hours()) => {
+  const openFormHandler = (methodName, eventForUpdate, dayItem, clickedHour = dayItem.hours(), resource) => {
     setMethod(methodName);
-    setEvent(eventForUpdate || { ...defaultEvent, start: dayItem.clone().hours(clickedHour), end: dayItem.clone().hours(clickedHour).add(1, 'hour') });
+    setEvent(eventForUpdate || { ...defaultEvent, id: getRandomIdInRange(0, 10000), start: dayItem.clone().hours(clickedHour), end: dayItem.clone().hours(clickedHour).add(1, 'hour'), resourceId: resource?.id });
   }
 
   const cancelButtonHandler = () => {
@@ -70,9 +74,9 @@ function Scheduler({ events, cellsHeight, resources }) {
 
   const eventAction = (eventToUpdate) => {
     if (method === 'Create') {
-      console.log()
       events.push(event);
       setShowModal(false);
+      console.log(event)
       setEvent(null);
     }
 

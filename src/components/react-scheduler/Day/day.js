@@ -88,7 +88,7 @@ export const Day = ({ events, startingPointTime, selectedEvent, method, cancelBu
                                             startingPointTime={startingPointTime}
                                             setDroppedHour={setDroppedHour}
                                             HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
-                                            resources={resources}
+                                            resource={resource}
                                         />
                                     )
                                 })
@@ -110,7 +110,7 @@ export const Day = ({ events, startingPointTime, selectedEvent, method, cancelBu
 
 
             {
-                selectedEvent || resources ? (
+                selectedEvent ? (
                     <Form
                         startingPointTime={startingPointTime}
                         selectedEvent={selectedEvent}
@@ -121,6 +121,7 @@ export const Day = ({ events, startingPointTime, selectedEvent, method, cancelBu
                         method={method}
                         removeButtonHandler={removeButtonHandler}
                         openFormHandler={openFormHandler}
+                        resources={resources}
                     />
                 ) : null
             }

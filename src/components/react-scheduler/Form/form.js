@@ -36,7 +36,7 @@ export const Form = ({ startingPointTime, selectedEvent, changeEventHandler, can
                                         <span>Resource:</span>
                                         <select
                                             onChange={(e) => { changeEventHandler(resources.find((resource) => resource.resource == e.target.value).id, 'resourceId') }}
-                                            defaultValue={resources.find((resource) => resource.id == selectedEvent.resourceId).resource}
+                                            defaultValue={resources.find((resource) => resource.id == selectedEvent.resourceId)?.resource}
                                         >
                                             {
                                                 resources.map((resource, i) => (
