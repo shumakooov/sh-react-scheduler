@@ -77,19 +77,19 @@ const agendaEvents = [
   {
     id: 4,
     title: "Сделать уборку",
-    start: new Date("2024-04-20T16:00"),
-    end: new Date("2024-04-20T17:30"),
+    start: new Date("2024-04-26T14:00"),
+    end: new Date("2024-04-26T15:30"),
     assignee: 'Samantha Bright',
     priority: 'medium',
-    allDay: true,
+    allDay: false,
     repeat: true,
     resourceId: 2,
   },
   {
     id: 41,
     title: "Купить овощей",
-    start: new Date("2024-04-20T14:00"),
-    end: new Date("2024-04-20T15:00"),
+    start: new Date("2024-04-26T14:00"),
+    end: new Date("2024-04-26T16:00"),
     assignee: 'Samantha Bright',
     priority: 'high',
     allDay: false,
@@ -177,6 +177,14 @@ const resources = [
     id: 3,
     resource: 'Окно 3'
   },
+  {
+    id: 4,
+    resource: 'Окно 4'
+  },
+  {
+    id: 5,
+    resource: 'Окно 5'
+  },
 ]
 
 function App() {
@@ -186,7 +194,7 @@ function App() {
         <Scheduler
           // events={myEvents}
           events={agendaEvents}
-          resources={resources}
+        // resources={resources}
         // cellsHeight={60}
         />
       </div>

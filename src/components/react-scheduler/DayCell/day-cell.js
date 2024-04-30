@@ -1,11 +1,11 @@
-import React from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import styles from './day-cell.module.css'
 import moment from "moment";
 
-export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEvents, currentResourceAndDayEvents, openFormHandler, startingPointTime, setDroppedHour, HEIGHT_DAY_CELL, resource }) => {
-    let eventsToMap;
+export const DayCell = ({ countOfHours, updateEventByDragAndDrop, mappedEventsArray, currentResourceAndDayEvents, openFormHandler, startingPointTime, setDroppedHour, HEIGHT_DAY_CELL, resource, eventWidth }) => {
+    const eventsToMap = currentResourceAndDayEvents ? currentResourceAndDayEvents : mappedEventsArray;
 
-    currentResourceAndDayEvents ? eventsToMap = currentResourceAndDayEvents : eventsToMap = currentDayEvents;
+    console.log(eventWidth);
 
     const onDragEndHandler = (e, event) => {
         updateEventByDragAndDrop(event)
@@ -19,6 +19,7 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
     const onDragOverHandler = (e) => {
         e.preventDefault()
     }
+
 
     return (
         <div className={styles.dayCellWrapper}>
@@ -46,7 +47,7 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
                     const EVENT_HEIGHT = duration.hours() * HEIGHT_DAY_CELL + duration.minutes() / 2;
 
                     return (
-                        <div style={{ top: EVENT_TOP, height: EVENT_HEIGHT - 1 }}
+                        <div style={{ width: eventWidth - 2, left: eventWidth * event?.rank, top: EVENT_TOP, height: EVENT_HEIGHT - 1 }}
                             className={styles.eventTitle}
                             onClick={() => openFormHandler('Update', event, null, null)}
                             name="event"

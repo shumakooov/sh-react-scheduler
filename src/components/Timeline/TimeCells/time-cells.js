@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './time-cells.module.css'
 import moment from "moment";
+import { colors } from "../../../utils/colors";
 
 export const TimeCells = ({
     countOfHours,
@@ -41,12 +42,7 @@ export const TimeCells = ({
                             style={{ height: HEIGHT_DAY_CELL }}
                             onDoubleClick={() => openFormHandler('Create', null, startingPointTime, i)}
                         >
-
-                            {/* <div className={styles.cellTimeWrapper}> */}
                             {`${i}`.padStart(2, '0')}:00
-                            {/* </div> */}
-
-                            {/* <div className={styles.cellEventWrapper} /> */}
                         </div>
                     ))
                 }
@@ -55,7 +51,7 @@ export const TimeCells = ({
             <div className={styles.eventsCanvaWrapper}>
                 <div>
                     {
-                        resources.map((resource) => {
+                        resources.map((resource, colorIndex) => {
                             return (
                                 <div className={styles.eventsCanva}>
                                     <div className={styles.resourceWrapper}>
@@ -80,13 +76,14 @@ export const TimeCells = ({
                                             let duration = moment.duration(endTime.diff(startTime));
                                             let EVENT_LEFT;
                                             let EVENT_WIDTH;
+                                            const lastColorId = Object.keys(colors).at(-1);
 
                                             fullTimeScale ? EVENT_LEFT = startTime.hours() * 100 + 100 / 60 * startTime.minutes() + 100 : EVENT_LEFT = startTime.clone().subtract(6, 'hours').hours() * 100 + 100 / 60 * startTime.minutes() + 100;
 
                                             fullTimeScale || endTime.isBefore(endTime.clone().hours(21).minutes(0), 'hour') ? EVENT_WIDTH = duration.hours() * 100 + 100 / 60 * duration.minutes() : EVENT_WIDTH = moment.duration(endTime.clone().hours(21).minutes(0).diff(startTime)).hours() * 100;
 
                                             return (
-                                                <div style={{ left: EVENT_LEFT, width: EVENT_WIDTH - 1, height: 70 }}
+                                                <div style={{ left: EVENT_LEFT, width: EVENT_WIDTH - 1, height: 70, backgroundColor: colors[colorIndex] ? colors[colorIndex] : colors[colorIndex - lastColorId - 1] }}
                                                     className={styles.eventTitle}
                                                     onDoubleClick={() => openModal(event)}
                                                     name="event"

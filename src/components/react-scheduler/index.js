@@ -57,10 +57,17 @@ function Scheduler({ events, cellsHeight, resources }) {
   }
 
   const removeButtonHandler = (eventToRemove) => {
-    const index = events.indexOf(eventToRemove)
+    delete eventToRemove.rank;
+    console.log(eventToRemove);
+    console.log(events);
+
+    const index = events.indexOf(eventToRemove);
+    console.log(index);
     if (index > -1) {
       events.splice(index, 1);
+      console.log(events);
     }
+
     setShowModal(false);
     setEvent(null);
   }
@@ -76,7 +83,6 @@ function Scheduler({ events, cellsHeight, resources }) {
     if (method === 'Create') {
       events.push(event);
       setShowModal(false);
-      console.log(event)
       setEvent(null);
     }
 
