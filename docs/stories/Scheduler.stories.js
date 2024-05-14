@@ -18,8 +18,8 @@ const myEvents = [
     {
         id: 3,
         title: "Лечь спать",
-        start: new Date("2024-04-07T23:01"),
-        end: new Date("2024-04-07T23:30"),
+        start: new Date("2024-04-27T23:01"),
+        end: new Date("2024-04-27T23:30"),
         allDay: false,
     },
     {
