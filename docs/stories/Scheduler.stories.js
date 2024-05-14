@@ -11,8 +11,8 @@ const myEvents = [
     {
         id: 2,
         title: "Встретиться с друзьями",
-        start: new Date("2024-04-07T21:01"),
-        end: new Date("2024-04-07T23:00"),
+        start: new Date("2024-04-27T21:01"),
+        end: new Date("2024-04-27T23:00"),
         allDay: false,
     },
     {
