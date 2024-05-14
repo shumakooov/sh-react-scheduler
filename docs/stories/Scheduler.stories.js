@@ -32,8 +32,8 @@ const myEvents = [
     {
         id: 14,
         title: "Пить воду",
-        start: new Date("2024-04-07T14:00"),
-        end: new Date("2024-04-07T16:30"),
+        start: new Date("2024-04-27T14:00"),
+        end: new Date("2024-04-27T16:30"),
         allDay: false,
     },
     {
