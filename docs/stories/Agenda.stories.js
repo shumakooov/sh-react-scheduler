@@ -83,7 +83,7 @@ const agendaEvents = [
         title: "Приготовить ужин",
         start: new Date("2024-04-20T18:00"),
         end: new Date("2024-04-20T21:50"),
-        assignee: 'Sandra Johnson',
+        assignee: 'Amanda Johnson',
         priority: 'medium',
         allDay: false,
         repeat: false,
