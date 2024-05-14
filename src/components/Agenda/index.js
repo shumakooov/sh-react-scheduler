@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styles from './index.module.css'
 import { Header } from "./Header/header";
 import moment from "moment";
@@ -10,6 +10,8 @@ function Agenda({ events }) {
     const [startingPointTime, setStartingPointTime] = useState(moment());
     const [isShowModal, setShowModal] = useState(false);
     const [event, setEvent] = useState(null);
+
+    const parentRef = useRef(null);
 
     const currentWeekEvents = events?.filter(event => isWeekContainEvent(event, startingPointTime));
 
@@ -57,7 +59,7 @@ function Agenda({ events }) {
     }
 
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.wrapper} ref={parentRef}>
             <Header
                 startingPointTime={startingPointTime}
                 prevHandler={prevHandler}
@@ -69,6 +71,7 @@ function Agenda({ events }) {
                 currentWeekEvents={currentWeekEvents}
                 startingPointTime={startingPointTime}
                 openModal={openModal}
+                parentRef={parentRef}
             />
 
             <Modal

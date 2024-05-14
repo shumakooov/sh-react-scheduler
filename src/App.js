@@ -77,30 +77,30 @@ const agendaEvents = [
   {
     id: 4,
     title: "Сделать уборку",
-    start: new Date("2024-04-26T14:00"),
-    end: new Date("2024-04-26T15:30"),
+    start: new Date("2024-04-20T14:00"),
+    end: new Date("2024-04-20T15:30"),
     assignee: 'Samantha Bright',
     priority: 'medium',
     allDay: false,
     repeat: true,
-    resourceId: 2,
+    resourceId: 5,
   },
   {
     id: 41,
     title: "Купить овощей",
-    start: new Date("2024-04-26T14:00"),
-    end: new Date("2024-04-26T16:00"),
+    start: new Date("2024-04-20T14:00"),
+    end: new Date("2024-04-20T16:00"),
     assignee: 'Samantha Bright',
     priority: 'high',
     allDay: false,
     repeat: true,
-    resourceId: 2,
+    resourceId: 4,
   },
   {
     id: 42,
     title: "Проверить почту",
-    start: new Date("2024-04-16T08:00"),
-    end: new Date("2024-04-16T08:40"),
+    start: new Date("2024-04-20T08:00"),
+    end: new Date("2024-04-20T08:40"),
     assignee: 'Todd Hoffman',
     priority: 'low',
     allDay: false,
@@ -110,8 +110,8 @@ const agendaEvents = [
   {
     id: 43,
     title: "Согласовать дизайн",
-    start: new Date("2024-04-16T12:00"),
-    end: new Date("2024-04-16T13:00"),
+    start: new Date("2024-04-20T12:00"),
+    end: new Date("2024-04-20T13:00"),
     assignee: 'Todd Hoffman',
     priority: 'high',
     allDay: true,
@@ -121,30 +121,30 @@ const agendaEvents = [
   {
     id: 5,
     title: "Сходить в филармонию",
-    start: new Date("2024-04-21T20:00"),
-    end: new Date("2024-04-21T22:30"),
+    start: new Date("2024-04-20T20:00"),
+    end: new Date("2024-04-20T22:30"),
     assignee: 'John Heart',
     priority: 'medium',
-    allDay: true,
+    allDay: false,
     repeat: false,
     resourceId: 1,
   },
   {
     id: 6,
     title: "Пить много воды (целый день)",
-    start: new Date("2024-04-26T17:00"),
-    end: new Date("2024-04-26T17:30"),
+    start: new Date("2024-04-20T17:00"),
+    end: new Date("2024-04-20T17:30"),
     assignee: 'John Heart',
     priority: 'high',
-    allDay: false,
+    allDay: true,
     repeat: false,
     resourceId: 1,
   },
   {
     id: 7,
     title: "Убраться в комнате",
-    start: new Date("2024-04-26T17:00"),
-    end: new Date("2024-04-26T18:00"),
+    start: new Date("2024-04-20T17:00"),
+    end: new Date("2024-04-20T18:00"),
     assignee: 'Todd Hoffman',
     priority: 'low',
     allDay: false,
@@ -154,8 +154,8 @@ const agendaEvents = [
   {
     id: 8,
     title: "Приготовить ужин",
-    start: new Date("2024-04-26T18:00"),
-    end: new Date("2024-04-26T21:50"),
+    start: new Date("2024-04-20T18:00"),
+    end: new Date("2024-04-20T21:50"),
     assignee: 'Sandra Johnson',
     priority: 'medium',
     allDay: false,
@@ -187,6 +187,72 @@ const resources = [
   },
 ]
 
+const resourcesMed = [
+  {
+    id: 1,
+    resource: 'Кабинет 101'
+  },
+  {
+    id: 2,
+    resource: 'Кабинет 111'
+  },
+  {
+    id: 3,
+    resource: 'Кабинет 103'
+  },
+  {
+    id: 4,
+    resource: 'Кабинет 117'
+  },
+  {
+    id: 5,
+    resource: 'Кабинет 201'
+  },
+  {
+    id: 6,
+    resource: 'Кабинет 203'
+  },
+  {
+    id: 7,
+    resource: 'Кабинет 222'
+  },
+  {
+    id: 8,
+    resource: 'Кабинет 204'
+  },
+  {
+    id: 9,
+    resource: 'Кабинет 205'
+  },
+  {
+    id: 10,
+    resource: 'Кабинет 212'
+  },
+]
+
+const resourcesAdress = [
+  {
+    id: 1,
+    resource: 'Ул. Солнечная, 10'
+  },
+  {
+    id: 2,
+    resource: 'Проспект Лунный, 5'
+  },
+  {
+    id: 3,
+    resource: 'Тротуарная ул., 3,'
+  },
+  {
+    id: 4,
+    resource: 'Ул. Лесная, 7'
+  },
+  {
+    id: 5,
+    resource: 'Площадь Фантастическая, 8'
+  },
+]
+
 function App() {
   return (
     <div className="App">
@@ -194,7 +260,7 @@ function App() {
         <Scheduler
           // events={myEvents}
           events={agendaEvents}
-        // resources={resources}
+          resources={resourcesAdress}
         // cellsHeight={60}
         />
       </div>

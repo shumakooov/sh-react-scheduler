@@ -83,18 +83,20 @@ export const TimeCells = ({
                                             fullTimeScale || endTime.isBefore(endTime.clone().hours(21).minutes(0), 'hour') ? EVENT_WIDTH = duration.hours() * 100 + 100 / 60 * duration.minutes() : EVENT_WIDTH = moment.duration(endTime.clone().hours(21).minutes(0).diff(startTime)).hours() * 100;
 
                                             return (
-                                                <div style={{ left: EVENT_LEFT, width: EVENT_WIDTH - 1, height: 70, backgroundColor: colors[colorIndex] ? colors[colorIndex] : colors[colorIndex - lastColorId - 1] }}
-                                                    className={styles.eventTitle}
-                                                    onDoubleClick={() => openModal(event)}
-                                                    name="event"
-                                                    draggable
-                                                    onDragEnd={(e) => onDragEndHandler(e, event)}
-                                                >
-                                                    {event.title}
-                                                    <div className={styles.eventTime}>
-                                                        {moment(event.start).format('HH:mm')} - {moment(event.end).format('HH:mm')}
+                                                <>
+                                                    <div style={{ left: EVENT_LEFT, width: EVENT_WIDTH - 1, height: 70, backgroundColor: colors[colorIndex] ? colors[colorIndex] : colors[colorIndex - lastColorId - 1] }}
+                                                        className={styles.eventTitle}
+                                                        onDoubleClick={() => openModal(event)}
+                                                        name="event"
+                                                        draggable
+                                                        onDragEnd={(e) => onDragEndHandler(e, event)}
+                                                    >
+                                                        {event.title}
+                                                        <div className={styles.eventTime}>
+                                                            {moment(event.start).format('HH:mm')} - {moment(event.end).format('HH:mm')}
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                </>
                                             )
                                         })
                                     }

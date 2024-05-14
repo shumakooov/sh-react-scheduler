@@ -173,6 +173,7 @@ function Scheduler({ events, cellsHeight, resources }) {
           <div>
             <Week
               startingPointTime={startingPointTime}
+              setStartingPointTime={setStartingPointTime}
               events={events}
               selectedEvent={event}
               method={method}
@@ -185,6 +186,7 @@ function Scheduler({ events, cellsHeight, resources }) {
               view={view}
               setDroppedHour={setDroppedHour}
               HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
+              setView={setView}
             />
           </div>
         ) : null

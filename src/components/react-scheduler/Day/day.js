@@ -6,38 +6,16 @@ import { Form } from "../Form/form";
 import { AllDayEventsCell } from "../AllDayEventsCell/all-day-events-cell";
 import { DayCell } from "../DayCell/day-cell";
 import { DayHeader } from "../DayHeader/day-header";
-import { eventMapper } from "../../../utils/eventMapper";
 
 export const Day = ({ events, startingPointTime, selectedEvent, method, cancelButtonHandler, eventAction, removeButtonHandler, changeEventHandler, openFormHandler, updateEventByDragAndDrop, setDroppedHour, HEIGHT_DAY_CELL, resources }) => {
-    const [eventWidth, setEventWidth] = useState(0);
-    // const [mappedEventsArray, setMappedEventsArray] = useState([]);
-    // const [currentDayEvents, setCurrentDayEvents] = useState([]);
-    const ref = useRef(null);
+    const countOfHours = 24;
 
     const currentDayEvents = events?.filter(event => isDayContainEvent(event, startingPointTime));
-    const mappedEvents = eventMapper(currentDayEvents);
-
-    const mappedEventsArray = [];
-    mappedEvents.forEach((column, rank) => {
-        column.forEach((event) => {
-            mappedEventsArray.push({ ...event, rank })
-        })
-    });
-
-    useEffect(() => {
-        setEventWidth((ref.current.clientWidth - 39) / mappedEvents.size)
-    }, [events, ref, mappedEvents]);
-
-    // setCurrentDayEvents(currentEvents);
-    // setMappedEventsArray(tempArr);
-    // setEventWidth((ref.current.clientWidth - 39) / mappedEvents.size)
-
-    const countOfHours = 24;
 
     return (
         <div className={styles.wrapper}>
             <div className={styles.eventsListWrapper}>
-                <div className={styles.timelineWrapper} ref={ref}>
+                <div className={styles.timelineWrapper}>
 
                     {
                         resources ? (
@@ -119,12 +97,13 @@ export const Day = ({ events, startingPointTime, selectedEvent, method, cancelBu
                                 <DayCell
                                     countOfHours={countOfHours}
                                     updateEventByDragAndDrop={updateEventByDragAndDrop}
-                                    mappedEventsArray={mappedEventsArray}
+                                    // mappedEventsArray={mappedEventsArray}
+                                    currentDayEvents={currentDayEvents}
                                     openFormHandler={openFormHandler}
                                     startingPointTime={startingPointTime}
                                     setDroppedHour={setDroppedHour}
                                     HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
-                                    eventWidth={eventWidth}
+                                // eventWidth={eventWidth}
                                 />
                             )
                         }

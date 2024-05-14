@@ -1,0 +1,45 @@
+.eventWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 2px 0;
+    padding: 6px 0;
+    cursor: pointer;
+}
+
+.eventWrapper:hover {
+    background-color: #eeeeee;
+    border-radius: 4px;
+}
+
+.eventPoint {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+.eventTitle {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 3px 5px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;   
+}
+
+.infoWrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 3px 5px;
+}
+
+.infoItem {
+    font-size: 12px;
+    margin-right: 15px;
+    color: #646464;
+}

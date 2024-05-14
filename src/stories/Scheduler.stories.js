@@ -69,9 +69,53 @@ const myEvents = [
     },
 ]
 
+const resources = [
+    {
+        id: 1,
+        resource: 'Окно 1'
+    },
+    {
+        id: 2,
+        resource: 'Окно 2'
+    },
+    {
+        id: 3,
+        resource: 'Окно 3'
+    },
+    {
+        id: 4,
+        resource: 'Окно 4'
+    },
+    {
+        id: 5,
+        resource: 'Окно 5'
+    },
+]
+
 export default {
     title: 'Example/Scheduler',
     component: Scheduler,
 }
 
-export const Basic = () => <Scheduler events={myEvents} />
+export const Basic = {
+    render: (args) => <Scheduler {...args} />,
+    args: {
+        events: myEvents
+    }
+}
+
+export const Resources = {
+    render: (args) => <Scheduler {...args} />,
+    args: {
+        events: myEvents,
+        resources: resources,
+    }
+}
+
+export const CustomCellsHeight = {
+    render: (args) => <Scheduler {...args} />,
+    args: {
+        cellsHeight: 60,
+        events: myEvents,
+    }
+}
