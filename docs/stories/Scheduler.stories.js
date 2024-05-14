@@ -4,8 +4,8 @@ const myEvents = [
     {
         id: 1,
         title: "Поужинать в Вилка Ложка",
-        start: new Date("2024-04-07T19:30"),
-        end: new Date("2024-04-07T21:00"),
+        start: new Date("2024-04-27T19:30"),
+        end: new Date("2024-04-27T21:00"),
         allDay: false,
     },
     {
