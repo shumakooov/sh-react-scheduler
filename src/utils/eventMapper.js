@@ -45,7 +45,7 @@ export const eventMapper = (events) => {
 
         rowAsHourData.delete(key);
         (columnsEventsGroups.get(columnNumber)).set(key, firstEventInRowAsHourData)
-        rowNumber = rowNumber + Math.floor(moment(firstEventInRowAsHourData.end).diff(moment(firstEventInRowAsHourData.start), 'h', true));
+        rowNumber = rowNumber + Math.ceil(moment(firstEventInRowAsHourData.end).diff(moment(firstEventInRowAsHourData.start), 'h', true));
     }
 
     return columnsEventsGroups;
