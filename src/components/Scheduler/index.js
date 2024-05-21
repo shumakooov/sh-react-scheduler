@@ -19,7 +19,7 @@ const defaultEvent = {
 
 const defaultEvents = [];
 
-function Scheduler({ events, cellsHeight, resources }) {
+function Scheduler({ events, cellsHeight, resources, onEventClick, onResourceClick, onEventDrag, onRangeChange, onViewChange, onTodayClick, onEventUpdate, onEventCreate, onEventDelete }) {
 
   let HEIGHT_DAY_CELL = 30;
 
@@ -57,6 +57,7 @@ function Scheduler({ events, cellsHeight, resources }) {
   }
 
   const removeButtonHandler = (eventToRemove) => {
+    onEventDelete && onEventDelete(eventToRemove);
     delete eventToRemove.rank;
     console.log(eventToRemove);
     console.log(events);
@@ -82,6 +83,7 @@ function Scheduler({ events, cellsHeight, resources }) {
   const eventAction = (eventToUpdate) => {
     if (method === 'Create') {
       events.push(event);
+      onEventCreate && onEventCreate(event);
       setShowModal(false);
       setEvent(null);
     }
@@ -91,6 +93,7 @@ function Scheduler({ events, cellsHeight, resources }) {
       events.find(eventGlobal => eventGlobal.id === eventToUpdate.id).start = event.start;
       events.find(eventGlobal => eventGlobal.id === eventToUpdate.id).end = event.end;
       events.find(eventGlobal => eventGlobal.id === eventToUpdate.id).resourceId = event.resourceId;
+      onEventUpdate && onEventUpdate(event)
       setShowModal(false);
       setEvent(null);
     }
@@ -107,19 +110,30 @@ function Scheduler({ events, cellsHeight, resources }) {
 
     globalEventForUpdate.start = newStart;
     globalEventForUpdate.end = newEnd;
+
+    onEventDrag && onEventDrag(eventToUpdate)
     setDroppedHour(null);
   }
 
   const prevHandler = () => {
     setStartingPointTime(prev => prev.clone().subtract(1, view));
+    if (onRangeChange) {
+      view == 'week' ? onRangeChange(startingPointTime.clone().subtract(1, view).startOf('isoWeek').format(), startingPointTime.clone().subtract(1, view).endOf('isoWeek').format())
+        : onRangeChange(startingPointTime.clone().subtract(1, view).startOf(view).format(), startingPointTime.clone().subtract(1, view).endOf(view).format())
+    }
   }
 
   const todayHandler = () => {
     view === views.WEEK ? setStartingPointTime(moment().subtract(1, 'day')) : setStartingPointTime(moment());
+    onTodayClick && onTodayClick(moment().format());
   }
 
   const nextHandler = () => {
     setStartingPointTime(prev => prev.clone().add(1, view));
+    if (onRangeChange) {
+      view == 'week' ? onRangeChange(startingPointTime.clone().add(1, view).startOf('isoWeek').format(), startingPointTime.clone().add(1, view).endOf('isoWeek').format())
+        : onRangeChange(startingPointTime.clone().add(1, view).startOf(view).format(), startingPointTime.clone().add(1, view).endOf(view).format())
+    }
   }
 
   return (
@@ -132,6 +146,7 @@ function Scheduler({ events, cellsHeight, resources }) {
         setView={setView}
         view={view}
         resources={resources}
+        onViewChange={onViewChange}
       />
       {
         view === views.MONTH ? (
@@ -163,6 +178,7 @@ function Scheduler({ events, cellsHeight, resources }) {
                 setStartingPointTime={setStartingPointTime}
                 setView={setView}
                 openModalHandler={openModalHandler}
+                onEventClick={onEventClick}
               />
             </div>
           </>
@@ -187,6 +203,7 @@ function Scheduler({ events, cellsHeight, resources }) {
               setDroppedHour={setDroppedHour}
               HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
               setView={setView}
+              onEventClick={onEventClick}
             />
           </div>
         ) : null
@@ -208,6 +225,8 @@ function Scheduler({ events, cellsHeight, resources }) {
               setDroppedHour={setDroppedHour}
               HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
               resources={resources}
+              onEventClick={onEventClick}
+              onResourceClick={onResourceClick}
             />
           </div>
         ) : null

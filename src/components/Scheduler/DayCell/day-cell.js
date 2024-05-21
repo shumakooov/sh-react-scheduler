@@ -4,7 +4,7 @@ import moment from "moment";
 import { eventMapper } from "../../../utils/eventMapper";
 import { views } from "../../../utils/constants";
 
-export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEvents, currentResourceAndDayEvents, openFormHandler, startingPointTime, setStartingPointTime, setDroppedHour, HEIGHT_DAY_CELL, resource, view, setView }) => {
+export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEvents, currentResourceAndDayEvents, openFormHandler, startingPointTime, setStartingPointTime, setDroppedHour, HEIGHT_DAY_CELL, resource, view, setView, onEventClick }) => {
     const [eventWidth, setEventWidth] = useState(0);
     let showViewMore = false;
     let isShowViewMoreCalculated = false;
@@ -16,7 +16,7 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
 
     const eventsToMap = currentResourceAndDayEvents ? currentResourceAndDayEvents : currentDayEvents;
 
-    const mappedEvents = eventMapper(eventsToMap);
+    const mappedEvents = eventMapper(eventsToMap.filter(event => event.allDay !== true));
 
     const mappedEventsArray = [];
     mappedEvents.forEach((column, rank) => {
@@ -82,7 +82,7 @@ export const DayCell = ({ countOfHours, updateEventByDragAndDrop, currentDayEven
                     return (
                         <div style={{ width: eventWidth - 2, left: eventWidth * event?.rank, top: EVENT_TOP, height: EVENT_HEIGHT - 1 }}
                             className={styles.eventTitle}
-                            onClick={() => openFormHandler('Update', event, null, null)}
+                            onClick={() => { openFormHandler('Update', event, null, null); onEventClick && onEventClick(event) }}
                             name="event"
                             draggable
                             onDragEnd={(e) => onDragEndHandler(e, event)}

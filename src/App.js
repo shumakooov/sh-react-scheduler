@@ -54,7 +54,7 @@ const myEvents = [
   {
     id: 6,
     title: "Пить много воды (целый день)",
-    start: new Date("2024-05-26"),
+    start: new Date("2024-05-26T17:00"),
     end: new Date("2024-05-26T21:00"),
     allDay: true,
   },
@@ -253,15 +253,59 @@ const resourcesAdress = [
   },
 ]
 
+const handleEventClick = (event) => {
+  alert('event clicked' + event.title)
+}
+
+const handleResourceClick = (resource) => {
+  alert('resource clicked' + resource.resource)
+}
+
+const handleEventDrag = (event) => {
+  alert('event dragged ' + event.title)
+}
+
+const handleRangeChange = (startTime, endTime) => {
+  alert(startTime + ' ' + endTime)
+}
+
+const handleViewChange = (view) => {
+  alert('view changed ' + view)
+}
+
+const handleTodayClick = (todayTime) => {
+  alert('today clicked ' + todayTime)
+}
+
+const handleUpdateEvent = (newEvent) => {
+  alert('new event title ' + newEvent.title)
+}
+
+const handleCreateEvent = (createdEvent) => {
+  alert('event created ' + createdEvent.title)
+}
+
+const handleDeleteEvent = (deletedEvent) => {
+  alert('event deleted ' + deletedEvent.title)
+}
+
 function App() {
   return (
     <div className="App">
       <div style={{ marginBottom: 350 }}>
         <Scheduler
-          // events={myEvents}
           events={myEvents}
-        // resources={resourcesAdress}
-        // cellsHeight={60}
+          // resources={resourcesAdress}
+          // cellsHeight={60}
+          onEventClick={handleEventClick}
+          onResourceClick={handleResourceClick}
+          onEventDrag={handleEventDrag}
+          onRangeChange={handleRangeChange}
+          onViewChange={handleViewChange}
+          onTodayClick={handleTodayClick}
+          onEventUpdate={handleUpdateEvent}
+          onEventCreate={handleCreateEvent}
+          onEventDelete={handleDeleteEvent}
         />
       </div>
 
@@ -269,11 +313,25 @@ function App() {
         <Timeline
           events={agendaEvents}
           resources={resources}
-        // fullTimeScale={true}
+          // fullTimeScale={true}
+          // onEventClick={handleEventClick}
+          onResourceClick={handleResourceClick}
+          onEventDrag={handleEventDrag}
+          // onRangeChange={handleRangeChange}
+          onTodayClick={handleTodayClick}
+          onEventUpdate={handleUpdateEvent}
+          onEventCreate={handleCreateEvent}
+          onEventDelete={handleDeleteEvent}
         />
       </div>
 
-      <Agenda events={agendaEvents} />
+      <Agenda
+        events={agendaEvents}
+        onEventClick={handleEventClick}
+        onRangeChange={handleRangeChange}
+        onTodayClick={handleTodayClick}
+        onEventUpdate={handleUpdateEvent}
+      />
     </div>
   );
 }

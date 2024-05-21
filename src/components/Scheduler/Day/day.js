@@ -7,7 +7,7 @@ import { AllDayEventsCell } from "../AllDayEventsCell/all-day-events-cell";
 import { DayCell } from "../DayCell/day-cell";
 import { DayHeader } from "../DayHeader/day-header";
 
-export const Day = ({ events, startingPointTime, selectedEvent, method, cancelButtonHandler, eventAction, removeButtonHandler, changeEventHandler, openFormHandler, updateEventByDragAndDrop, setDroppedHour, HEIGHT_DAY_CELL, resources }) => {
+export const Day = ({ events, startingPointTime, selectedEvent, method, cancelButtonHandler, eventAction, removeButtonHandler, changeEventHandler, openFormHandler, updateEventByDragAndDrop, setDroppedHour, HEIGHT_DAY_CELL, resources, onEventClick, onResourceClick }) => {
     const countOfHours = 24;
 
     const currentDayEvents = events?.filter(event => isDayContainEvent(event, startingPointTime));
@@ -22,7 +22,7 @@ export const Day = ({ events, startingPointTime, selectedEvent, method, cancelBu
                             <div className={styles.headerWrapper}>
                                 <div className={styles.emptySquareInHeader} />
                                 <div className={styles.header}>
-                                    <DayHeader resources={resources} />
+                                    <DayHeader resources={resources} onResourceClick={onResourceClick} />
                                 </div>
                             </div>
                         ) : null
@@ -90,6 +90,7 @@ export const Day = ({ events, startingPointTime, selectedEvent, method, cancelBu
                                             setDroppedHour={setDroppedHour}
                                             HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
                                             resource={resource}
+                                            onEventClick={onEventClick}
                                         />
                                     )
                                 })
@@ -103,7 +104,8 @@ export const Day = ({ events, startingPointTime, selectedEvent, method, cancelBu
                                     startingPointTime={startingPointTime}
                                     setDroppedHour={setDroppedHour}
                                     HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
-                                // eventWidth={eventWidth}
+                                    // eventWidth={eventWidth}
+                                    onEventClick={onEventClick}
                                 />
                             )
                         }

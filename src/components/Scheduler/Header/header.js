@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./header.module.css"
 import { views } from "../../../utils/constants";
 
-const Header = ({ startingPointTime, prevHandler, todayHandler, nextHandler, setView, view, resources }) => {
+const Header = ({ startingPointTime, prevHandler, todayHandler, nextHandler, setView, view, resources, onViewChange }) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
@@ -34,9 +34,9 @@ const Header = ({ startingPointTime, prevHandler, todayHandler, nextHandler, set
                 {
                     !resources ? (
                         <div>
-                            <button className={view === views.MONTH ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => setView(views.MONTH)}>Month</button>
-                            <button className={view === views.WEEK ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => setView(views.WEEK)}>Week</button>
-                            <button className={view === views.DAY ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => setView(views.DAY)}>Day</button>
+                            <button className={view === views.MONTH ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => { setView(views.MONTH); onViewChange && onViewChange(views.MONTH) }}>Month</button>
+                            <button className={view === views.WEEK ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => { setView(views.WEEK); onViewChange && onViewChange(views.WEEK) }}>Week</button>
+                            <button className={view === views.DAY ? `${styles.btnSwitchMode} ${styles.btnSwitchMode_unpressed}` : styles.btnSwitchMode} onClick={() => { setView(views.DAY); onViewChange && onViewChange(views.DAY) }}>Day</button>
                         </div>
                     ) : null
                 }

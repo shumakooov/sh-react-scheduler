@@ -3,7 +3,7 @@ import styles from './cells.module.css'
 import moment from "moment";
 import { Event } from "../Event/event";
 
-export const Cells = ({ currentWeekEvents, startingPointTime, openModal, parentRef }) => {
+export const Cells = ({ currentWeekEvents, startingPointTime, openModal, parentRef, onEventClick }) => {
     const countOfDays = 7;
 
     return (
@@ -22,7 +22,7 @@ export const Cells = ({ currentWeekEvents, startingPointTime, openModal, parentR
                                     {
                                         currentDayEvents?.map((event, i) => {
                                             return (
-                                                <Event event={event} parentRef={parentRef} openModal={openModal} />
+                                                <Event event={event} parentRef={parentRef} openModal={openModal} onEventClick={onEventClick} />
                                             )
                                         })
                                     }

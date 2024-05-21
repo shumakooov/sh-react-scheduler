@@ -3,7 +3,7 @@ import styles from './day.module.css'
 import { TimeCells } from "../TimeCells/time-cells";
 import { isDayContainEvent } from "../../../utils/helpers";
 
-export const Day = ({ events, resources, startingPointTime, fullTimeScale, updateEventByDragAndDrop, setDroppedHour, openModal }) => {
+export const Day = ({ events, resources, startingPointTime, fullTimeScale, updateEventByDragAndDrop, setDroppedHour, openModal, onEventClick, onResourceClick }) => {
     const countOfHours = 24;
     const currentDayEvents = events?.filter(event => isDayContainEvent(event, startingPointTime));
 
@@ -22,7 +22,9 @@ export const Day = ({ events, resources, startingPointTime, fullTimeScale, updat
                                 openModal={openModal}
                                 // startingPointTime={startingPointTime.clone().startOf('week').add(i + 1, 'day')}
                                 setDroppedHour={setDroppedHour}
-                            // HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
+                                // HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
+                                onEventClick={onEventClick}
+                                onResourceClick={onResourceClick}
                             />
                         </div>
                     </div>

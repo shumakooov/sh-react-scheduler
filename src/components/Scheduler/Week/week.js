@@ -7,7 +7,7 @@ import { AllDayEventsCell } from "../AllDayEventsCell/all-day-events-cell";
 import { RedLine } from "../RedLine/redLine";
 import { Form } from "../Form/form";
 
-export const Week = ({ startingPointTime, events, selectedEvent, method, cancelButtonHandler, eventAction, removeButtonHandler, changeEventHandler, openFormHandler, updateEventByDragAndDrop, view, setView, setDroppedHour, HEIGHT_DAY_CELL, setStartingPointTime }) => {
+export const Week = ({ startingPointTime, events, selectedEvent, method, cancelButtonHandler, eventAction, removeButtonHandler, changeEventHandler, openFormHandler, updateEventByDragAndDrop, view, setView, setDroppedHour, HEIGHT_DAY_CELL, setStartingPointTime, onEventClick }) => {
     const countOfHours = 24;
     const countOfDays = 7;
 
@@ -59,6 +59,7 @@ export const Week = ({ startingPointTime, events, selectedEvent, method, cancelB
                                             HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
                                             setStartingPointTime={setStartingPointTime}
                                             setView={setView}
+                                            onEventClick={onEventClick}
                                         />
                                     </div>
                                 )

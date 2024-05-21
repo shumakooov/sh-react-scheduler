@@ -5,7 +5,7 @@ import moment from "moment";
 import { Day } from "./Day/day";
 import { Modal } from "../Agenda/Modal/modal";
 
-function Timeline({ events, resources, fullTimeScale }) {
+function Timeline({ events, resources, fullTimeScale, onEventClick, onResourceClick, onEventDrag, onRangeChange, onTodayClick, onEventUpdate, onEventCreate, onEventDelete }) {
     const [startingPointTime, setStartingPointTime] = useState(moment());
     const [droppedHour, setDroppedHour] = useState(null);
     const [isShowModal, setShowModal] = useState(false);
@@ -13,14 +13,17 @@ function Timeline({ events, resources, fullTimeScale }) {
 
     const prevHandler = () => {
         setStartingPointTime(prev => prev.clone().subtract(1, 'day'));
+        onRangeChange && onRangeChange(startingPointTime.clone().subtract(1, 'day').startOf('day').format(), startingPointTime.clone().subtract(1, 'day').endOf('day').format())
     }
 
     const todayHandler = () => {
         setStartingPointTime(moment());
+        onTodayClick && onTodayClick(moment().format());
     }
 
     const nextHandler = () => {
         setStartingPointTime(prev => prev.clone().add(1, 'day'));
+        onRangeChange && onRangeChange(startingPointTime.clone().add(1, 'day').startOf('day').format(), startingPointTime.clone().add(1, 'day').endOf('day').format())
     }
 
     const cancelButtonHandler = () => {
@@ -34,7 +37,6 @@ function Timeline({ events, resources, fullTimeScale }) {
     }
 
     const updateEventByDragAndDrop = (eventToUpdate) => {
-        console.log(droppedHour)
         let oldEndTime = moment(eventToUpdate.end);
         let oldStartTime = moment(eventToUpdate.start);
         let duration = moment.duration(oldEndTime.diff(oldStartTime));
@@ -45,6 +47,8 @@ function Timeline({ events, resources, fullTimeScale }) {
 
         globalEventForUpdate.start = newStart;
         globalEventForUpdate.end = newEnd;
+
+        onEventDrag && onEventDrag(eventToUpdate)
         setDroppedHour(null);
     }
 
@@ -58,6 +62,8 @@ function Timeline({ events, resources, fullTimeScale }) {
         // globalEventForUpdate.repeat = event.repeat;
         globalEventForUpdate.assignee = event.assignee;
         globalEventForUpdate.resourceId = event.resourceId;
+
+        onEventUpdate && onEventUpdate(event)
         setShowModal(false);
         setEvent(null);
     }
@@ -87,6 +93,8 @@ function Timeline({ events, resources, fullTimeScale }) {
                     updateEventByDragAndDrop={updateEventByDragAndDrop}
                     setDroppedHour={setDroppedHour}
                     openModal={openModal}
+                    onEventClick={onEventClick}
+                    onResourceClick={onResourceClick}
                 />
             </div>
 

@@ -3,7 +3,7 @@ import styles from './month-cell.module.css';
 import { isCurrentDay, isDayContainEvent, isSelectedMonth } from "../../../utils/helpers";
 import { views } from "../../../utils/constants";
 
-export const MonthCell = ({ dayItem, events, startingPointTime, setView, setStartingPointTime, openModalHandler }) => {
+export const MonthCell = ({ dayItem, events, startingPointTime, setView, setStartingPointTime, openModalHandler, onEventClick }) => {
     return (
         <div className={dayItem.day() === 6 || dayItem.day() === 0 ? `${styles.cellWrapper} ${styles.cellWrapper_weekend}` : styles.cellWrapper}
             key={dayItem.unix()}
@@ -27,7 +27,7 @@ export const MonthCell = ({ dayItem, events, startingPointTime, setView, setStar
                 {
                     events?.slice(0, 2)
                         .map(event => (
-                            <div className={styles.eventTitle} title={event.title} onClick={() => openModalHandler('Update', event)}>
+                            <div className={styles.eventTitle} title={event.title} onClick={() => { openModalHandler('Update', event); onEventClick && onEventClick(event) }}>
                                 {event.title}
                             </div>
                         ))

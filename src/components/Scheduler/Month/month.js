@@ -3,7 +3,7 @@ import { MonthCell } from "../MonthCell/month-cell";
 import { isDayContainEvent } from "../../../utils/helpers";
 import { MonthHeader } from "../MonthHeader/month-header";
 
-export const Month = ({ startDay, events, startingPointTime, setView, setStartingPointTime, openModalHandler }) => {
+export const Month = ({ startDay, events, startingPointTime, setView, setStartingPointTime, openModalHandler, onEventClick }) => {
     const day = startDay.clone();
 
     const totalDays = 42;
@@ -22,6 +22,7 @@ export const Month = ({ startDay, events, startingPointTime, setView, setStartin
                         setStartingPointTime={setStartingPointTime}
                         openModalHandler={openModalHandler}
                         key={dayItem.unix()}
+                        onEventClick={onEventClick}
                     />
                 ))}
         </>

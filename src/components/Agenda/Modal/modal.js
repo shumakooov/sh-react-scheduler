@@ -56,7 +56,7 @@ export const Modal = ({ cancelButtonHandler, isShowModal, event, changeEventHand
                                         <input placeholder="Assignee" value={event.assignee} onChange={(e) => { changeEventHandler(e.target.value, 'assignee') }} />
                                     </div>
                                     {
-                                        modalView === 'Agenda' ? (
+                                        modalView === 'agenda' ? (
                                             <div>
                                                 <div className={styles.text}>Priority</div>
                                                 <select

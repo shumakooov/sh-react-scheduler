@@ -3,7 +3,7 @@ import styles from './event.module.css'
 import Tooltip from "../../Tooltip/tooltip";
 import moment from "moment";
 
-export const Event = ({ event, parentRef, openModal }) => {
+export const Event = ({ event, parentRef, openModal, onEventClick }) => {
     const eventRef = useRef(null);
 
     const priorities = {
@@ -17,7 +17,7 @@ export const Event = ({ event, parentRef, openModal }) => {
             {/* <Tooltip elementRef={eventRef} parentRef={parentRef}>
                 <div>Im a tooltip</div>
             </Tooltip> */}
-            <div className={styles.eventWrapper} onDoubleClick={() => openModal(event)} ref={eventRef}>
+            <div className={styles.eventWrapper} onClick={() => { openModal(event); onEventClick && onEventClick(event) }} ref={eventRef}>
                 <div className={styles.eventPoint} style={{ background: priorities[event.priority] }}></div>
                 <div>
                     <div className={styles.eventTitle}>

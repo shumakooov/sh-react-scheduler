@@ -13,7 +13,9 @@ export const TimeCells = ({
     openFormHandler,
     startingPointTime,
     setDroppedHour,
-    HEIGHT_DAY_CELL
+    HEIGHT_DAY_CELL,
+    onEventClick,
+    onResourceClick
 }) => {
     const hoursScale = fullTimeScale ? [...Array(countOfHours).keys()] : [...Array(countOfHours).keys()].slice(6, 21);
 
@@ -54,7 +56,7 @@ export const TimeCells = ({
                         resources.map((resource, colorIndex) => {
                             return (
                                 <div className={styles.eventsCanva}>
-                                    <div className={styles.resourceWrapper}>
+                                    <div className={styles.resourceWrapper} onClick={() => onResourceClick && onResourceClick(resource)}>
                                         <div>{resource.resource}</div>
                                     </div>
 
@@ -90,6 +92,7 @@ export const TimeCells = ({
                                                         name="event"
                                                         draggable
                                                         onDragEnd={(e) => onDragEndHandler(e, event)}
+                                                        onClick={() => onEventClick && onEventClick(event)}
                                                     >
                                                         {event.title}
                                                         <div className={styles.eventTime}>
