@@ -77,8 +77,8 @@ const agendaEvents = [
   {
     id: 4,
     title: "Сделать уборку",
-    start: new Date("2024-04-19T14:00"),
-    end: new Date("2024-04-19T15:30"),
+    start: new Date("2024-05-20T14:00"),
+    end: new Date("2024-05-20T15:30"),
     assignee: 'Samantha Bright',
     priority: 'medium',
     allDay: false,
@@ -88,8 +88,8 @@ const agendaEvents = [
   {
     id: 41,
     title: "Купить овощей",
-    start: new Date("2024-04-21T14:00"),
-    end: new Date("2024-04-21T16:00"),
+    start: new Date("2024-05-20T14:00"),
+    end: new Date("2024-05-20T16:00"),
     assignee: 'Samantha Bright',
     priority: 'high',
     allDay: false,
@@ -99,8 +99,8 @@ const agendaEvents = [
   {
     id: 42,
     title: "Проверить почту",
-    start: new Date("2024-04-20T08:00"),
-    end: new Date("2024-04-20T08:40"),
+    start: new Date("2024-05-20T08:00"),
+    end: new Date("2024-05-20T08:40"),
     assignee: 'Todd Hoffman',
     priority: 'low',
     allDay: false,
@@ -110,8 +110,8 @@ const agendaEvents = [
   {
     id: 43,
     title: "Согласовать дизайн",
-    start: new Date("2024-04-20T12:00"),
-    end: new Date("2024-04-20T13:00"),
+    start: new Date("2024-05-20T12:00"),
+    end: new Date("2024-05-20T13:00"),
     assignee: 'Todd Hoffman',
     priority: 'high',
     allDay: true,
@@ -121,8 +121,8 @@ const agendaEvents = [
   {
     id: 5,
     title: "Сходить в филармонию",
-    start: new Date("2024-04-20T20:00"),
-    end: new Date("2024-04-20T22:30"),
+    start: new Date("2024-05-20T20:00"),
+    end: new Date("2024-05-20T22:30"),
     assignee: 'John Heart',
     priority: 'medium',
     allDay: false,
@@ -132,8 +132,8 @@ const agendaEvents = [
   {
     id: 6,
     title: "Пить много воды (целый день)",
-    start: new Date("2024-04-20T17:00"),
-    end: new Date("2024-04-20T17:30"),
+    start: new Date("2024-05-20T17:00"),
+    end: new Date("2024-05-20T17:30"),
     assignee: 'John Heart',
     priority: 'high',
     allDay: true,
@@ -143,8 +143,8 @@ const agendaEvents = [
   {
     id: 7,
     title: "Убраться в комнате",
-    start: new Date("2024-04-20T17:00"),
-    end: new Date("2024-04-20T18:00"),
+    start: new Date("2024-05-20T17:00"),
+    end: new Date("2024-05-20T18:00"),
     assignee: 'Todd Hoffman',
     priority: 'low',
     allDay: false,
@@ -154,8 +154,8 @@ const agendaEvents = [
   {
     id: 8,
     title: "Приготовить ужин",
-    start: new Date("2024-04-20T18:00"),
-    end: new Date("2024-04-20T21:50"),
+    start: new Date("2024-05-20T18:00"),
+    end: new Date("2024-05-20T21:50"),
     assignee: 'Sandra Johnson',
     priority: 'medium',
     allDay: false,
@@ -253,6 +253,29 @@ const resourcesAdress = [
   },
 ]
 
+const resourcesNames = [
+  {
+    id: 1,
+    resource: 'Иванова Ангелина'
+  },
+  {
+    id: 2,
+    resource: 'Петров Артемий'
+  },
+  {
+    id: 3,
+    resource: 'Сидорова Вероника'
+  },
+  {
+    id: 4,
+    resource: 'Кузнецова Дарья'
+  },
+  {
+    id: 5,
+    resource: 'Михайлов Арсений'
+  },
+]
+
 const handleEventClick = (event) => {
   alert('event clicked' + event.title)
 }
@@ -295,42 +318,42 @@ function App() {
       <div style={{ marginBottom: 350 }}>
         <Scheduler
           events={myEvents}
-          // resources={resourcesAdress}
-          // cellsHeight={60}
-          onEventClick={handleEventClick}
-          onResourceClick={handleResourceClick}
-          onEventDrag={handleEventDrag}
-          onRangeChange={handleRangeChange}
-          onViewChange={handleViewChange}
-          onTodayClick={handleTodayClick}
-          onEventUpdate={handleUpdateEvent}
-          onEventCreate={handleCreateEvent}
-          onEventDelete={handleDeleteEvent}
+        // resources={resourcesAdress}
+        // cellsHeight={60}
+        // onEventClick={handleEventClick}
+        // onResourceClick={handleResourceClick}
+        // onEventDrag={handleEventDrag}
+        // onRangeChange={handleRangeChange}
+        // onViewChange={handleViewChange}
+        // onTodayClick={handleTodayClick}
+        // onEventUpdate={handleUpdateEvent}
+        // onEventCreate={handleCreateEvent}
+        // onEventDelete={handleDeleteEvent}
         />
       </div>
 
       <div style={{ marginBottom: 350 }}>
         <Timeline
           events={agendaEvents}
-          resources={resources}
-          // fullTimeScale={true}
-          // onEventClick={handleEventClick}
-          onResourceClick={handleResourceClick}
-          onEventDrag={handleEventDrag}
-          // onRangeChange={handleRangeChange}
-          onTodayClick={handleTodayClick}
-          onEventUpdate={handleUpdateEvent}
-          onEventCreate={handleCreateEvent}
-          onEventDelete={handleDeleteEvent}
+          resources={resourcesNames}
+        // fullTimeScale={true}
+        // onEventClick={handleEventClick}
+        // onResourceClick={handleResourceClick}
+        // onEventDrag={handleEventDrag}
+        // onRangeChange={handleRangeChange}
+        // onTodayClick={handleTodayClick}
+        // onEventUpdate={handleUpdateEvent}
+        // onEventCreate={handleCreateEvent}
+        // onEventDelete={handleDeleteEvent}
         />
       </div>
 
       <Agenda
         events={agendaEvents}
-        onEventClick={handleEventClick}
-        onRangeChange={handleRangeChange}
-        onTodayClick={handleTodayClick}
-        onEventUpdate={handleUpdateEvent}
+      // onEventClick={handleEventClick}
+      // onRangeChange={handleRangeChange}
+      // onTodayClick={handleTodayClick}
+      // onEventUpdate={handleUpdateEvent}
       />
     </div>
   );

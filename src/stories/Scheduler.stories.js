@@ -1,4 +1,4 @@
-import Scheduler from "../components/react-scheduler";
+import Scheduler from "../components/Scheduler";
 
 const myEvents = [
     {

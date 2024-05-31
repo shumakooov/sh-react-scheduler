@@ -1,6 +1,7 @@
 /** @type { import('@storybook/react').Preview } */
 const preview = {
   parameters: {
+    actions: { argTypesRegex: '^on.*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
