@@ -16,7 +16,7 @@ const agendaEvents = [
     },
     {
         id: 41,
-        title: "Купить овощей",
+        title: "Купить овощей и фруктов",
         start: new Date("2024-05-17T14:00"),
         end: new Date("2024-05-17T16:00"),
         assignee: 'Samantha Bright',
