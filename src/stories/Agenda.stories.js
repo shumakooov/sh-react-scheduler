@@ -28,8 +28,8 @@ const agendaEvents = [
     {
         id: 42,
         title: "Проверить почту",
-        start: new Date("2024-05-16T08:00"),
-        end: new Date("2024-05-16T08:40"),
+        start: new Date("2024-05-17T08:00"),
+        end: new Date("2024-05-17T08:40"),
         assignee: 'Todd Hoffman',
         priority: 'low',
         allDay: false,
@@ -39,8 +39,8 @@ const agendaEvents = [
     {
         id: 43,
         title: "Согласовать дизайн",
-        start: new Date("2024-05-16T12:00"),
-        end: new Date("2024-05-16T13:00"),
+        start: new Date("2024-05-17T12:00"),
+        end: new Date("2024-05-17T13:00"),
         assignee: 'Todd Hoffman',
         priority: 'high',
         allDay: true,
