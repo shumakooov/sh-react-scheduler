@@ -7,7 +7,7 @@ const agendaEvents = [
         id: 4,
         title: "Сделать уборку",
         start: new Date("2024-05-17T13:00"),
-        end: new Date("2024-05-17T15:30"),
+        end: new Date("2024-05-17T16:30"),
         assignee: 'Samantha Bright',
         priority: 'medium',
         allDay: false,
