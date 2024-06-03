@@ -59,7 +59,6 @@ function Scheduler({ events, cellsHeight, resources, onEventClick, onResourceCli
   const removeButtonHandler = (eventToRemove) => {
     onEventDelete && onEventDelete(eventToRemove);
     delete eventToRemove.rank;
-    console.log(eventToRemove);
 
     const index = events.indexOf(eventToRemove);
     console.log(index);
