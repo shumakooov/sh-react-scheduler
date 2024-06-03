@@ -24,7 +24,7 @@
   "module": "lib/index.esm.js",
   "scripts": {
     "start": "react-scripts start",
-    "build": "rollup -c",
+    "build": "rollup -c -w",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
