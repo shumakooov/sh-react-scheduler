@@ -104,7 +104,7 @@ export const Day = ({ events, startingPointTime, selectedEvent, method, cancelBu
                                     startingPointTime={startingPointTime}
                                     setDroppedHour={setDroppedHour}
                                     HEIGHT_DAY_CELL={HEIGHT_DAY_CELL}
-                                    // eventWidth={eventWidth}
+
                                     onEventClick={onEventClick}
                                 />
                             )
