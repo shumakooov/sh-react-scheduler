@@ -60,13 +60,11 @@ function Scheduler({ events, cellsHeight, resources, onEventClick, onResourceCli
     onEventDelete && onEventDelete(eventToRemove);
     delete eventToRemove.rank;
     console.log(eventToRemove);
-    console.log(events);
 
     const index = events.indexOf(eventToRemove);
     console.log(index);
     if (index > -1) {
       events.splice(index, 1);
-      console.log(events);
     }
 
     setShowModal(false);
