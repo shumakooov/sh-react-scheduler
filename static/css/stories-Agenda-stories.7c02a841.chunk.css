@@ -2,6 +2,7 @@
     border: 1px solid rgb(198, 195, 195);
     position: relative;
     min-height: 500px;
+    background-color: #fff;
 }
 
 .header_wrapper__gNjeI {
@@ -9,6 +10,7 @@
     min-height: 45px;
     display: flex;
     align-items: center;
+    background-color: #fff;
 }
 
 .header_container__Hm4NK {
@@ -271,4 +273,4 @@
     width: 40px;
 }
 
-/*# sourceMappingURL=stories-Agenda-stories.c9b8f899.chunk.css.map*/
+/*# sourceMappingURL=stories-Agenda-stories.7c02a841.chunk.css.map*/
