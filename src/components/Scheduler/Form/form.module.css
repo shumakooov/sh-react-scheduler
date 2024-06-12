@@ -16,6 +16,7 @@
     border: 1px solid rgb(198, 195, 195);
     border-radius: 4px;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .selectTimeWrapper {
@@ -78,6 +79,7 @@
     padding: 4px 8px;
     border-radius: 4px;
     cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .button:active {
@@ -97,4 +99,9 @@
     top: 50%;
     right: 50%;
     transform: translate(50%,-50%);  
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.textWrapper {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

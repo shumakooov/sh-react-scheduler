@@ -15,6 +15,7 @@
 
 .daysOfWeekText {
     margin-left: 3px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .daysOfWeekNumber {
@@ -22,6 +23,7 @@
     color: #000;
     font-weight: 400;
     padding-left: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .currentDay {

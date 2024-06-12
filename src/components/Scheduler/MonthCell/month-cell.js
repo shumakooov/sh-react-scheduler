@@ -13,7 +13,7 @@ export const MonthCell = ({ dayItem, events, startingPointTime, setView, setStar
                     className={isSelectedMonth(dayItem, startingPointTime) ? `${styles.dayWrapper} ${styles.selectedMonthColor}` : styles.dayWrapper}
                     onClick={() => openModalHandler('Create', null, dayItem)}
                 >
-                    <div className={isCurrentDay(dayItem) ? styles.currentDay : ''}>{dayItem.format('D')}</div>
+                    <div className={isCurrentDay(dayItem) ? styles.currentDay : styles.dayText}>{dayItem.format('D')}</div>
                 </div>
                 {
                     events?.length > 2 ? (

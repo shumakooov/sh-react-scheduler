@@ -43,6 +43,7 @@
     text-overflow: ellipsis;
     cursor: pointer;
     width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .eventTime {
@@ -50,6 +51,7 @@
     margin-right: 15px;
     display: flex;
     text-wrap: wrap;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .showMoreTitle {
@@ -66,4 +68,5 @@
     cursor: pointer;
     position: absolute;
     right: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

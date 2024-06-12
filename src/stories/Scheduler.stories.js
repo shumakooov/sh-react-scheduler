@@ -1,100 +1,116 @@
 import Scheduler from "../components/Scheduler";
+import moment from "moment";
+import { ArgTypes, Canvas, Description, Source, Story, Title } from "@storybook/blocks";
 
 const myEvents = [
     {
         id: 1,
-        title: "Поужинать в Вилка Ложка",
-        start: new Date("2024-04-27T19:30"),
-        end: new Date("2024-04-27T21:00"),
+        title: "Стратегическое планирование",
+        start: new Date().setHours(19, 30),
+        end: new Date().setHours(21, 0),
         allDay: false,
     },
     {
         id: 2,
-        title: "Встретиться с друзьями",
-        start: new Date("2024-04-27T21:01"),
-        end: new Date("2024-04-27T23:00"),
+        title: "Креативный брифинг",
+        start: new Date(moment().add(1, 'day')).setHours(21, 0),
+        end: new Date(moment().add(1, 'day')).setHours(23, 0),
         allDay: false,
     },
     {
         id: 3,
-        title: "Лечь спать",
-        start: new Date("2024-04-27T23:01"),
-        end: new Date("2024-04-27T23:30"),
+        title: "Координационное совещание",
+        start: new Date().setHours(23, 0),
+        end: new Date().setHours(23, 50),
         allDay: false,
     },
     {
         id: 13,
-        title: "Сделать уроки",
-        start: new Date("2024-04-27T14:00"),
-        end: new Date("2024-04-27T16:30"),
+        title: "Проектный обзор",
+        start: new Date().setHours(14, 0),
+        end: new Date().setHours(16, 30),
         allDay: false,
     },
     {
         id: 14,
-        title: "Пить воду",
-        start: new Date("2024-04-27T14:00"),
-        end: new Date("2024-04-27T16:30"),
+        title: "Маркетинговый митап",
+        start: new Date(moment().add(2, 'day')).setHours(14, 0),
+        end: new Date(moment().add(2, 'day')).setHours(16, 30),
         allDay: false,
     },
     {
         id: 4,
-        title: "Купить овощей",
-        start: new Date("2024-04-20T14:00"),
-        end: new Date("2024-04-20T15:00"),
+        title: "Финансовый анализ",
+        start: new Date(moment().add(1, 'day')).setHours(14, 0),
+        end: new Date(moment().add(1, 'day')).setHours(15, 0),
     },
     {
         id: 5,
-        title: "Сходить в филармонию",
-        start: new Date("2024-04-21T20:00"),
-        end: new Date("2024-04-21T22:30"),
+        title: "Технический обзор",
+        start: new Date(moment().add(2, 'day')).setHours(20, 0),
+        end: new Date(moment().add(2, 'day')).setHours(22, 30),
     },
     {
         id: 6,
-        title: "Пить много воды (целый день)",
-        start: new Date("2024-04-26"),
-        end: new Date("2024-04-26T21:00"),
+        title: "Кадровая встреча",
+        start: new Date().setHours(19, 0),
+        end: new Date().setHours(21, 0),
         allDay: true,
     },
     {
         id: 7,
-        title: "Убраться в комнате",
-        start: new Date("2024-04-26T17:00"),
-        end: new Date("2024-04-26T18:00"),
+        title: "Отчет по продажам",
+        start: new Date(moment().subtract(1, 'day')).setHours(17, 0),
+        end: new Date(moment().subtract(1, 'day')).setHours(18, 0),
     },
     {
         id: 8,
-        title: "Приготовить ужин",
-        start: new Date("2024-04-26T18:00"),
-        end: new Date("2024-04-26T19:00"),
+        title: "Инновационный семинар",
+        start: new Date(moment().add(2, 'day')).setHours(15, 0),
+        end: new Date(moment().add(2, 'day')).setHours(18, 0),
     },
 ]
 
 const resources = [
     {
         id: 1,
-        resource: 'Окно 1'
+        resource: 'Кабинет 101'
     },
     {
         id: 2,
-        resource: 'Окно 2'
+        resource: 'Кабинет 111'
     },
     {
         id: 3,
-        resource: 'Окно 3'
+        resource: 'Кабинет 103'
     },
     {
         id: 4,
-        resource: 'Окно 4'
+        resource: 'Кабинет 117'
     },
     {
         id: 5,
-        resource: 'Окно 5'
+        resource: 'Кабинет 201'
     },
 ]
 
 export default {
     title: 'Example/Scheduler',
     component: Scheduler,
+    tags: ['autodocs'],
+    parameters: {
+        docs: {
+            page: () => (
+                <>
+                    <Title />
+                    <Description />
+
+                    <Canvas />
+
+                </>
+            )
+        }
+    },
 }
 
 export const Basic = {

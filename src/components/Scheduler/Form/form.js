@@ -19,12 +19,12 @@ export const Form = ({ startingPointTime, selectedEvent, changeEventHandler, can
                         </div>
                         <div className={styles.selectTimeWrapper}>
                             <div className={styles.dateWrapper}>
-                                <span>Start:</span>
+                                <span className={styles.textWrapper}>Start:</span>
                                 <input type="datetime-local" defaultValue={moment(selectedEvent.start).format('YYYY-MM-DDTHH:mm')} onChange={(e) => { changeEventHandler(e.target.value, 'start') }} />
                             </div>
 
                             <div className={styles.dateWrapper}>
-                                <span>End:</span>
+                                <span className={styles.textWrapper}>End:</span>
                                 <input type="datetime-local" defaultValue={moment(selectedEvent.end).format('YYYY-MM-DDTHH:mm')} onChange={(e) => { changeEventHandler(e.target.value, 'end') }} />
                             </div>
                         </div>
@@ -33,7 +33,7 @@ export const Form = ({ startingPointTime, selectedEvent, changeEventHandler, can
                             {
                                 resources ? (
                                     <div className={styles.dateWrapper}>
-                                        <span>Resource:</span>
+                                        <span className={styles.textWrapper}>Resource:</span>
                                         <select
                                             onChange={(e) => { changeEventHandler(resources.find((resource) => resource.resource == e.target.value).id, 'resourceId') }}
                                             defaultValue={resources.find((resource) => resource.id == selectedEvent.resourceId)?.resource}

@@ -30,6 +30,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     cursor: pointer;   
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .infoWrapper {
@@ -42,4 +43,5 @@
     font-size: 12px;
     margin-right: 15px;
     color: #646464;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

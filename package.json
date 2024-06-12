@@ -1,7 +1,7 @@
 {
   "name": "shum-react-scheduler",
   "author": "Gleb Shumakov",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

@@ -1,5 +1,5 @@
 .daysOfWeek {
-    min-width: 140px;
+    min-width: 130px;
     min-height: 24px;
     background-color: #fff;
     font-size: 13px;
@@ -10,4 +10,5 @@
 
 .daysOfWeekText {
     margin-left: 3px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

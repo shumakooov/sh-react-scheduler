@@ -1,5 +1,5 @@
 .cellWrapper {
-    min-width: 140px;
+    min-width: 130px;
     min-height: 100px;
     background-color: #fff;
 }
@@ -40,6 +40,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .eventWrapper {
@@ -61,6 +62,7 @@
     text-overflow: ellipsis;
     cursor: pointer;
     min-height: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .showMoreTitle {
@@ -74,4 +76,9 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dayText {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -10,7 +10,7 @@ export const Cells = ({ currentWeekEvents, startingPointTime, openModal, parentR
         <div className={styles.dayCellWrapper}>
             {
                 [...Array(countOfDays)].map((_, i) => {
-                    let currentDayEvents = currentWeekEvents?.filter(event => moment(event.start).isSame(startingPointTime.clone().startOf('week').add(i + 1, 'day'), 'day'))
+                    let currentDayEvents = currentWeekEvents?.filter(event => moment(event.start).isSame(startingPointTime.clone().startOf('week').add(i + 1, 'day'), 'day')).sort((a, b) => moment(b.start).diff(moment(b.end)) - moment(a.start).diff(moment(a.end)))
 
                     if (currentDayEvents.length > 0) {
                         return (
