@@ -22,6 +22,7 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header_btnChangeDay__QPMDW:hover {
@@ -44,6 +45,7 @@
     font-size: 18px;
     height: 40px;
     cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .header_btnSwitchMode__UOJVB:hover {
@@ -68,6 +70,7 @@
 
 .header_currentDateText__la2rp {
     font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .Scheduler_wrapper__6VmAo {
     border: 1px solid rgb(198, 195, 195);
@@ -125,6 +128,7 @@
     padding: 4px 8px;
     border-radius: 4px;
     cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .Scheduler_button__lZlHe:active {
@@ -194,6 +198,7 @@
     padding-left: 2px;
     border-right: 1px solid rgb(198, 195, 195);
     border-bottom: 1px solid rgb(198, 195, 195);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     &:last-child {
         border-bottom: none;
     }
@@ -206,6 +211,7 @@
     padding-left: 2px;
     border-right: 1px solid rgb(198, 195, 195);
     border-bottom: 1px solid rgb(198, 195, 195);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .redLine_redLine__9YUND {
     background-color: #f00;
@@ -233,6 +239,7 @@
     border: 1px solid rgb(198, 195, 195);
     border-radius: 4px;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .form_selectTimeWrapper__qwJcX {
@@ -295,6 +302,7 @@
     padding: 4px 8px;
     border-radius: 4px;
     cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .form_button__Qogr2:active {
@@ -314,6 +322,11 @@
     top: 50%;
     right: 50%;
     transform: translate(50%,-50%);  
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form_textWrapper__ax3eM {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .all-day-events-cell_alldayCellWrapper__hZ9su {
     position: relative;
@@ -343,6 +356,7 @@
     text-overflow: ellipsis;
     cursor: pointer;
     width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .day-cell_dayCellWrapper__Njz7s {
     position: relative;
@@ -389,6 +403,7 @@
     text-overflow: ellipsis;
     cursor: pointer;
     width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .day-cell_eventTime__Y-nsX {
@@ -396,6 +411,7 @@
     margin-right: 15px;
     display: flex;
     text-wrap: wrap;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .day-cell_showMoreTitle__1WRLQ {
@@ -412,6 +428,7 @@
     cursor: pointer;
     position: absolute;
     right: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .day-header_resourceWrapper__1LLMs {
     width: 100%;
@@ -428,10 +445,11 @@
     width: 100%;
     text-align: center;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .month-cell_cellWrapper__04dOG {
-    min-width: 140px;
+    min-width: 130px;
     min-height: 100px;
     background-color: #fff;
 }
@@ -472,6 +490,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .month-cell_eventWrapper__AzcXG {
@@ -493,6 +512,7 @@
     text-overflow: ellipsis;
     cursor: pointer;
     min-height: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .month-cell_showMoreTitle__0TdFa {
@@ -506,9 +526,14 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.month-cell_dayText__MIQO3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .month-header_daysOfWeek__2UUGO {
-    min-width: 140px;
+    min-width: 130px;
     min-height: 24px;
     background-color: #fff;
     font-size: 13px;
@@ -519,6 +544,7 @@
 
 .month-header_daysOfWeekText__mGRdR {
     margin-left: 3px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .week_wrapper__HV-K- {
     /* background-color: rgb(198, 195, 195); */
@@ -579,6 +605,7 @@
     padding-left: 2px;
     border-right: 1px solid rgb(198, 195, 195);
     border-bottom: 1px solid rgb(198, 195, 195);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     &:last-child {
         border-bottom: none;
     }
@@ -600,6 +627,7 @@
 
 .week-header_daysOfWeekText__VWacJ {
     margin-left: 3px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .week-header_daysOfWeekNumber__1Fh9o {
@@ -607,6 +635,7 @@
     color: #000;
     font-weight: 400;
     padding-left: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .week-header_currentDay__b2DId {
@@ -618,4 +647,4 @@
     align-items: center;
 }
 
-/*# sourceMappingURL=stories-Scheduler-stories.08723260.chunk.css.map*/
+/*# sourceMappingURL=stories-Scheduler-stories.c5e9920f.chunk.css.map*/
